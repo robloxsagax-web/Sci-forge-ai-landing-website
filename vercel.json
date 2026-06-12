@@ -1,7 +1,25 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/server/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "outputDirectory": "dist/client"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "dist/client/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "dist/server/server.js"
+    }
+  ],
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client"
 }

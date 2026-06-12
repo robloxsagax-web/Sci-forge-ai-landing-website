@@ -1,5 +1,5 @@
 {
-  "// vite-static-engine-override-v3": "Cache-bust for Vite static SPA routing override",
+  "// vercel-ssr-engine-override-v4": "Cache-bust for Vercel SSR Node.js serverless deployment",
   "name": "tanstack_start_ts",
   "private": true,
   "sideEffects": false,
