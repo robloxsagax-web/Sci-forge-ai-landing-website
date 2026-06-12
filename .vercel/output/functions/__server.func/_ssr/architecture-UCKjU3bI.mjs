@@ -1,5 +1,5 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
-import { a as TelemetryBanner, T as TraceCard, S as SectionHeader } from "./router-CGPChiO2.mjs";
+import { a as TelemetryBanner, T as TraceCard, S as SectionHeader } from "./router-BjRbeK34.mjs";
 import { P as PenTool, b as Cpu, c as ChevronRight, d as Gauge } from "../_libs/lucide-react.mjs";
 import { m as motion, u as useInView } from "../_libs/framer-motion.mjs";
 import "../_libs/tanstack__query-core.mjs";

@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { T as TraceCard, S as SectionHeader } from "./router-CGPChiO2.mjs";
+import { T as TraceCard, S as SectionHeader } from "./router-BjRbeK34.mjs";
 import { G as GraduationCap, a as Sparkles, B as Building2, C as Check } from "../_libs/lucide-react.mjs";
 import { m as motion } from "../_libs/framer-motion.mjs";
 import "../_libs/tanstack__router-core.mjs";
@@ -25,7 +25,7 @@ const PLANS = [
     Icon: GraduationCap,
     name: "Core Portal",
     tag: "Student Tier",
-    price: "Rs. 0",
+    price: "$0",
     period: "/ Free Account",
     cta: "Open free account",
     href: "/",
@@ -42,7 +42,7 @@ const PLANS = [
     Icon: Sparkles,
     name: "Quantum Engine",
     tag: "Premium Researcher · Recommended",
-    price: "Rs. 2,500",
+    price: "$10",
     period: "/ Month",
     cta: "Initialize Quantum Engine",
     href: "/",
@@ -60,7 +60,7 @@ const PLANS = [
     name: "Institutional Grid",
     tag: "University / Lab Network",
     price: "Custom",
-    period: "Licensing Quote",
+    period: "Pricing",
     cta: "Request licensing quote",
     href: "/",
     featured: false,
