@@ -16,6 +16,7 @@ const WORKSPACES = [
     icon: Brain,
     code: "W-01",
     title: "Core Intelligence Console",
+    redirectTarget: "core-intelligence-console",
     motion: "Stream-pill ignition · 60fps token cascade",
     body: "The central chat nexus. Fire multi-model stream queries and watch answers cascade across a reasoning pipeline tuned for deep academic velocity.",
     tone: "orange",
@@ -24,6 +25,7 @@ const WORKSPACES = [
     icon: PenTool,
     code: "W-02",
     title: "Scribble Analysis Lab",
+    redirectTarget: "scribble-analysis-lab",
     motion: "Vector-diff overlay · surgical cubic-bezier path reveal",
     body: "Processes your hand-drawn calculus derivations, trusses, and circuits. Instantly ingests vectors to flag exact geometric and mathematical notation errors.",
     tone: "gold",
@@ -32,6 +34,7 @@ const WORKSPACES = [
     icon: Telescope,
     code: "W-03",
     title: "Quantum Research Engine",
+    redirectTarget: "quantum-research-engine",
     motion: "Telemetry-glyph scroll · deep-field parallax",
     body: "Built for complex academic investigations. Executes deep-dive variable derivations and symbolic algebra at 1e-14 precision.",
     tone: "cyan",
@@ -40,6 +43,7 @@ const WORKSPACES = [
     icon: NotebookPen,
     code: "W-04",
     title: "Notes Generator",
+    redirectTarget: "notes-generator",
     motion: "Sheet-fold cascade · modular accordion bloom",
     body: "Auto-compiles structured summaries, modular concept breakdowns, and exam-ready briefs modeled directly on professional scientific outlines.",
     tone: "orange",
@@ -48,6 +52,7 @@ const WORKSPACES = [
     icon: ListChecks,
     code: "W-05",
     title: "Quiz Generator",
+    redirectTarget: "quiz-generator",
     motion: "Difficulty-tier ladder · Elo-curve sweep",
     body: "Fires customized testing fields mapped to strict difficulty tiers, running diagnostic metrics to track exactly which sub-skills have leveled up.",
     tone: "gold",
@@ -56,6 +61,7 @@ const WORKSPACES = [
     icon: Network,
     code: "W-06",
     title: "Concept Dependency Map",
+    redirectTarget: "concept-dependency-map",
     motion: "Force-graph crystallization · edge-glow trace",
     body: "An interactive node web tracking prerequisite knowledge. See exactly what structural gates block your mastery of advanced engineering concepts.",
     tone: "cyan",
@@ -64,6 +70,7 @@ const WORKSPACES = [
     icon: Rocket,
     code: "W-07",
     title: "Academic Propulsion",
+    redirectTarget: "academic-propulsion",
     motion: "Skill-vector launch · radial velocity rings",
     body: "Generates personalized learning roadmaps with dynamic skill-velocity vectors rendered like a live flight telemetry HUD.",
     tone: "orange",
@@ -72,6 +79,7 @@ const WORKSPACES = [
     icon: FolderLock,
     code: "W-08",
     title: "Research Portfolio",
+    redirectTarget: "research-portfolio",
     motion: "Vault unlock · AES-glyph shimmer",
     body: "A secure, zero-mock-data vault consolidating every generated artifact—notes, quizzes, lab outputs, and scribble diffs—into one archive.",
     tone: "gold",
@@ -105,7 +113,10 @@ export function Workspaces() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
               >
-                <TraceCard className="h-full">
+                <TraceCard className="h-full cursor-pointer" onClick={() => {
+                  localStorage.setItem('auth_redirect_target', w.redirectTarget);
+                  window.location.href = "https://sci-forge-aii.vercel.app/";
+                }}>
                   <div className="p-5">
                     <div className="flex items-center justify-between">
                       <div

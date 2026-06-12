@@ -13,6 +13,7 @@ const PLANS = [
     cta: "Open free account",
     href: "/",
     featured: false,
+    signupRedirect: true,
     items: [
       "Core Intelligence Console",
       "Basic Notes Generator access",
@@ -29,6 +30,7 @@ const PLANS = [
     cta: "Initialize Quantum Engine",
     href: "/",
     featured: true,
+    signupRedirect: true,
     items: [
       "Unrestricted Scribble Analysis Lab",
       "High-precision Quantum Research Engine",
@@ -45,6 +47,7 @@ const PLANS = [
     cta: "Request licensing quote",
     href: "/",
     featured: false,
+    signupRedirect: false,
     items: [
       "Multi-seat deployment pipelines",
       "Admin diagnostic overview suites",
@@ -138,16 +141,32 @@ export function PricingPage() {
                         ))}
                       </ul>
                       <div className="mt-8">
-                        <Link
-                          to={p.href}
-                          className={`inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-semibold transition ${
-                            p.featured
-                              ? "brand-gradient text-background shadow-[0_0_28px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
-                              : "border border-border bg-card/60 hover:border-orange/60"
-                          }`}
-                        >
-                          {p.cta}
-                        </Link>
+                        {p.signupRedirect ? (
+                          <button
+                            onClick={() => {
+                              localStorage.setItem('auth_default_tab', 'signup');
+                              window.location.href = "https://sci-forge-aii.vercel.app/";
+                            }}
+                            className={`inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-semibold transition cursor-pointer ${
+                              p.featured
+                                ? "brand-gradient text-background shadow-[0_0_28px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
+                                : "border border-border bg-card/60 hover:border-orange/60"
+                            }`}
+                          >
+                            {p.cta}
+                          </button>
+                        ) : (
+                          <Link
+                            to={p.href}
+                            className={`inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                              p.featured
+                                ? "brand-gradient text-background shadow-[0_0_28px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
+                                : "border border-border bg-card/60 hover:border-orange/60"
+                            }`}
+                          >
+                            {p.cta}
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </TraceCard>

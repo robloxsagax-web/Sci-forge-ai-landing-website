@@ -150,9 +150,9 @@ export function Nav({ theme, setTheme, dyslexic, setDyslexic }: ReturnType<typeo
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                to="/pricing"
-                className="group relative hidden sm:inline-flex h-9 items-center gap-1.5 overflow-hidden rounded-lg brand-gradient px-3 text-xs font-semibold text-background shadow-[0_0_24px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
+              <button
+                onClick={() => (window.location.href = "https://sci-forge-aii.vercel.app/")}
+                className="group relative hidden sm:inline-flex h-9 items-center gap-1.5 overflow-hidden rounded-lg brand-gradient px-3 text-xs font-semibold text-background shadow-[0_0_24px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)] cursor-pointer"
               >
                 <span
                   aria-hidden
@@ -160,7 +160,7 @@ export function Nav({ theme, setTheme, dyslexic, setDyslexic }: ReturnType<typeo
                 />
                 <span className="relative">Launch Workspace</span>
                 <ArrowRight className="relative h-3.5 w-3.5" />
-              </Link>
+              </button>
             </motion.div>
           </div>
         </div>
@@ -229,12 +229,15 @@ export function SectionHeader({
 export function TraceCard({
   children,
   className = "",
+  onClick,
 }: {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
     <div
+      onClick={onClick}
       className={`group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-transform duration-300 hover:scale-[1.025] hover:border-orange/40 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--brand-orange)_45%,transparent)] ${className}`}
     >
       <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">

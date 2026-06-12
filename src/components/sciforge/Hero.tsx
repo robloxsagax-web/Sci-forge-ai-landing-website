@@ -113,13 +113,16 @@ function PromptAnchor() {
               </button>
             ))}
 
-            <Link
-              to="/architecture"
+            <button
+              onClick={() => {
+                localStorage.setItem('pending_initial_query', SUGGESTIONS[active].prompt);
+                window.location.href = "https://sci-forge-aii.vercel.app/";
+              }}
               className="ml-auto inline-flex h-8 items-center gap-1.5 rounded-lg brand-gradient px-3 text-xs font-semibold text-background"
             >
               <SendHorizontal className="h-3.5 w-3.5" />
               Run
-            </Link>
+            </button>
           </div>
 
           {tokens.length > 0 && (
@@ -226,9 +229,9 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Link
-              to="/pricing"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl brand-gradient px-5 py-3 text-sm font-semibold text-background shadow-[0_0_32px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
+            <button
+              onClick={() => (window.location.href = "https://sci-forge-aii.vercel.app/")}
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl brand-gradient px-5 py-3 text-sm font-semibold text-background shadow-[0_0_32px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)] cursor-pointer"
             >
               <span
                 aria-hidden
@@ -236,7 +239,7 @@ export function Hero() {
               />
               <span className="relative">Initialize Workspace</span>
               <ArrowRight className="relative h-4 w-4" />
-            </Link>
+            </button>
           </motion.div>
           <Link
             to="/architecture"
