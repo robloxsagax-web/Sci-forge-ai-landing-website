@@ -5,7 +5,6 @@ import {
   Moon,
   Type,
   Atom,
-  Sparkles,
   PenTool,
   Telescope,
   NotebookPen,
@@ -25,11 +24,18 @@ import {
 
 /* -----------------------------------------------------------
  * SciForge AI — Master Landing
+ * Sections:
+ *  01 SYSTEM INITIALIZATION ENTRY (Hero)
+ *  02 REAL-TIME SYSTEM ENGINE PROFILE (Telemetry HUDs + banner)
+ *  03 OBSERVABLE INSTRUMENT CAPABILITIES (Workspace matrix)
+ *  04 MODULE BREAKDOWN: SCRIBBLE ANALYSIS
+ *  05 OBSERVABLE RUNTIME PERFORMANCE (Terminal)
+ *  Footer
  * --------------------------------------------------------- */
 
 type Theme = "dark" | "light";
 
-function useTheme() {
+function useChrome() {
   const [theme, setTheme] = useState<Theme>("dark");
   const [dyslexic, setDyslexic] = useState(false);
 
@@ -38,53 +44,109 @@ function useTheme() {
     root.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
+  // A+ toggles dyslexic typeface AND AAA contrast in one node.
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dyslexic", dyslexic);
+    root.classList.toggle("a11y-aaa", dyslexic);
   }, [dyslexic]);
 
   return { theme, setTheme, dyslexic, setDyslexic };
 }
 
-/* ---------- Animated typing prompt ---------- */
-const PROMPTS = [
-  "Deconstruct quantum superposition into first principles…",
-  "Debug this calculus matrix derivation step-by-step…",
-  "Map the prerequisite chain for tensor calculus…",
-  "Generate an exam-grade brief on CRISPR gene editing…",
-  "Solve this hand-drawn truss for axial forces…",
-];
-
-function useTyping(strings: string[]) {
-  const [i, setI] = useState(0);
-  const [text, setText] = useState("");
-  const [phase, setPhase] = useState<"type" | "hold" | "erase">("type");
-
+/* ---------- System clock ---------- */
+function useClock() {
+  const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
-    const target = strings[i];
-    let t: number;
-    if (phase === "type") {
-      if (text.length < target.length) {
-        t = window.setTimeout(() => setText(target.slice(0, text.length + 1)), 38);
-      } else {
-        t = window.setTimeout(() => setPhase("hold"), 1400);
-      }
-    } else if (phase === "hold") {
-      t = window.setTimeout(() => setPhase("erase"), 900);
-    } else {
-      if (text.length > 0) {
-        t = window.setTimeout(() => setText(target.slice(0, text.length - 1)), 18);
-      } else {
-        t = window.setTimeout(() => {
-          setI((i + 1) % strings.length);
-          setPhase("type");
-        }, 200);
-      }
-    }
-    return () => window.clearTimeout(t);
-  }, [text, phase, i, strings]);
+    setNow(new Date());
+    const id = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
+  if (!now) return "--:--:--";
+  return now.toLocaleTimeString("en-GB", { hour12: false });
+}
 
-  return text;
+/* ---------- Brand mark: Atom-Ring Fusion ---------- */
+function BrandMark() {
+  return (
+    <span
+      aria-hidden
+      className="relative inline-flex h-7 w-7 items-center justify-center"
+    >
+      <motion.span
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.1, delay: 0.1, ease: "easeOut" }}
+        className="absolute h-2.5 w-2.5 rounded-full bg-orange shadow-[0_0_18px_4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
+      />
+      <motion.svg
+        viewBox="0 0 28 28"
+        className="absolute h-7 w-7 animate-ring-orbit"
+        initial={{ rotate: 0 }}
+      >
+        <motion.ellipse
+          cx="14"
+          cy="14"
+          rx="12"
+          ry="5"
+          fill="none"
+          stroke="var(--brand-orange)"
+          strokeOpacity="0.85"
+          strokeWidth="1"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.4, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <motion.ellipse
+          cx="14"
+          cy="14"
+          rx="12"
+          ry="5"
+          fill="none"
+          stroke="var(--brand-gold)"
+          strokeOpacity="0.7"
+          strokeWidth="1"
+          transform="rotate(60 14 14)"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.4, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <motion.ellipse
+          cx="14"
+          cy="14"
+          rx="12"
+          ry="5"
+          fill="none"
+          stroke="var(--brand-cyan)"
+          strokeOpacity="0.55"
+          strokeWidth="1"
+          transform="rotate(-60 14 14)"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.4, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        />
+      </motion.svg>
+    </span>
+  );
+}
+
+/* ---------- Shimmery hover link ---------- */
+function ShimmerLink({ children, href }: { children: string; href: string }) {
+  const [hot, setHot] = useState(false);
+  return (
+    <a
+      href={href}
+      onMouseEnter={() => {
+        setHot(false);
+        // re-trigger animation
+        requestAnimationFrame(() => setHot(true));
+      }}
+      onAnimationEnd={() => setHot(false)}
+      className="relative inline-block text-foreground/80 hover:text-foreground transition-colors"
+    >
+      <span className={hot ? "glyph-shimmer" : ""}>{children}</span>
+    </a>
+  );
 }
 
 /* ---------- Nav ---------- */
@@ -93,30 +155,33 @@ function Nav({
   setTheme,
   dyslexic,
   setDyslexic,
-}: ReturnType<typeof useTheme>) {
+}: ReturnType<typeof useChrome>) {
+  const clock = useClock();
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       <div className="mx-auto mt-4 max-w-6xl px-4">
-        <div className="flex items-center justify-between rounded-2xl border border-border bg-background/70 px-4 py-2.5 backdrop-blur-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]">
+        <div className="flex items-center justify-between rounded-2xl border border-border bg-background/70 px-4 py-2.5 backdrop-blur-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.4)]">
           <a href="#top" className="flex items-center gap-2.5">
-            <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-md brand-gradient">
-              <Atom className="h-4 w-4 text-background" strokeWidth={2.5} />
-              <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-orange animate-pulse-dot" />
+            <BrandMark />
+            <span className="font-display text-[15px] font-extrabold tracking-[0.18em] uppercase">
+              Sci<span className="text-orange">·</span>Forge<span className="text-muted-foreground"> </span>AI
             </span>
-            <span className="font-display text-[15px] font-extrabold tracking-wider uppercase">
-              SciForge<span className="text-orange">.</span>AI
+            <span className="hidden md:inline-flex items-center gap-1.5 ml-3 pl-3 border-l border-border font-mono text-[10px] text-muted-foreground">
+              <span className="h-1 w-1 rounded-full bg-mentor animate-pulse-dot" />
+              {clock}
             </span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-7 text-[13px] text-muted-foreground">
-            {["Workspaces", "Core Tech", "Research Vault", "Pricing"].map((l) => (
-              <a
-                key={l}
-                href={`#${l.toLowerCase().replace(/\s+/g, "-")}`}
-                className="hover:text-foreground transition-colors"
-              >
-                {l}
-              </a>
+          <nav className="hidden md:flex items-center gap-7 text-[13px]">
+            {[
+              ["Workspaces", "#workspaces"],
+              ["Core Tech", "#core-tech"],
+              ["Research Vault", "#research-vault"],
+              ["Pricing", "#pricing"],
+            ].map(([l, href]) => (
+              <ShimmerLink key={l} href={href as string}>
+                {l as string}
+              </ShimmerLink>
             ))}
           </nav>
 
@@ -124,27 +189,44 @@ function Nav({
             <button
               onClick={() => setDyslexic(!dyslexic)}
               aria-pressed={dyslexic}
-              aria-label="Toggle dyslexia-friendly typeface"
-              className={`group inline-flex h-9 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-mono transition-all ${
-                dyslexic ? "bg-orange/15 text-orange border-orange/40" : "bg-card/40 text-muted-foreground hover:text-foreground"
+              aria-label="Toggle dyslexia-friendly typeface and AAA contrast"
+              title="Accessibility: OpenDyslexic + AAA contrast"
+              className={`group inline-flex h-9 items-center gap-1.5 rounded-lg border px-2.5 text-xs font-mono transition-all ${
+                dyslexic
+                  ? "bg-orange/20 text-orange border-orange/50 shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
+                  : "bg-card/40 text-muted-foreground hover:text-foreground border-border"
               }`}
             >
               <Type className="h-3.5 w-3.5" />
-              <span className="font-semibold">A+</span>
+              <span className="font-semibold tracking-wider">A+</span>
             </button>
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              aria-label="Toggle theme"
+              aria-label="Toggle light/dark theme"
               className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card/40 text-muted-foreground hover:text-foreground transition-colors"
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
-            <a
+            <motion.a
               href="#hero"
-              className="hidden sm:inline-flex h-9 items-center gap-1.5 rounded-lg brand-gradient px-3 text-xs font-semibold text-background shadow-[0_0_24px_-4px_rgba(255,122,0,0.55)] hover:brightness-110 transition"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 360, damping: 22 }}
+              className="group relative hidden sm:inline-flex h-9 items-center gap-1.5 overflow-hidden rounded-lg brand-gradient px-3 text-xs font-semibold text-background shadow-[0_0_24px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
             >
-              Launch <ArrowRight className="h-3.5 w-3.5" />
-            </a>
+              <span
+                aria-hidden
+                className="absolute inset-0 bg-[linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.45)_50%,transparent_70%)] bg-[length:220%_100%] animate-[glyph-shimmer_2.6s_linear_infinite]"
+              />
+              <span className="relative">Launch</span>
+              <motion.span
+                className="relative inline-flex"
+                initial={{ x: 0 }}
+                whileHover={{ x: 4 }}
+              >
+                <ArrowRight className="h-3.5 w-3.5" />
+              </motion.span>
+            </motion.a>
           </div>
         </div>
       </div>
@@ -152,143 +234,199 @@ function Nav({
   );
 }
 
-/* ---------- Telemetry strip ---------- */
+/* ---------- Telemetry banner (horizontal conveyor) ---------- */
 const TELEMETRY = [
-  "[MODEL: LLAMA-3.3-70B // LATENCY: 42ms // SPEED: 85 t/s]",
-  "[GEMINI-CORE-PRO // CTX: 1.0M // STREAM: STABLE]",
-  "[SCRIBBLE-ENGINE: VECTOR-DIFF v4.1 // FRAMES: 60Hz]",
-  "[GRAPH-SOLVER: NODES 1,284 // EDGES 3,902 // OK]",
-  "[ADAPTIVE-MENTOR: ONLINE // CONF 0.97]",
-  "[RESEARCH-VAULT: AES-256 // ZERO-MOCK MODE]",
-  "[QUANTUM-ENGINE: SYMPY+JAX // PRECISION 1e-14]",
-  "[QUIZ-CALIBRATOR: ELO 1842 → 1907]",
+  "MODEL: LLAMA-3.3-70B // LATENCY: 42ms // SPEED: 85 t/s",
+  "GEMINI-CORE-PRO // CTX: 1.0M // STREAM: STABLE",
+  "SCRIBBLE-ENGINE: VECTOR-DIFF v4.1 // FRAMES: 60Hz",
+  "GRAPH-SOLVER: NODES 1,284 // EDGES 3,902 // OK",
+  "ADAPTIVE-MENTOR: ONLINE // CONF 0.97",
+  "RESEARCH-VAULT: AES-256 // ZERO-MOCK MODE",
+  "QUANTUM-ENGINE: SYMPY+JAX // PRECISION 1e-14",
+  "QUIZ-CALIBRATOR: ELO 1842 → 1907",
 ];
 
-function TelemetryStream({ side }: { side: "left" | "right" }) {
-  const doubled = useMemo(() => [...TELEMETRY, ...TELEMETRY], []);
+function TelemetryBanner() {
+  const doubled = useMemo(() => [...TELEMETRY, ...TELEMETRY, ...TELEMETRY], []);
   return (
     <div
       aria-hidden
-      className={`pointer-events-none fixed top-0 ${
-        side === "left" ? "left-0" : "right-0"
-      } hidden lg:block z-0 h-screen w-44 overflow-hidden opacity-[0.18]`}
+      className="group relative overflow-hidden border-y border-border bg-background/40"
     >
-      <div
-        className={`flex flex-col gap-3 px-3 py-10 font-mono text-[10px] leading-snug text-cyan animate-telemetry ${
-          side === "left" ? "text-left" : "text-right"
-        }`}
-      >
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
+      <div className="flex w-max animate-marquee-x whitespace-nowrap py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/40 group-hover:text-cyan/80 transition-colors">
         {doubled.map((t, i) => (
-          <div key={i}>{t}</div>
+          <span key={i} className="px-6 flex items-center gap-3">
+            <span className="h-1 w-1 rounded-full bg-orange/70" />
+            [{t}]
+          </span>
         ))}
       </div>
     </div>
   );
 }
 
+/* ---------- Section header ---------- */
+function SectionHeader({
+  kicker,
+  title,
+  sub,
+  align = "left",
+}: {
+  kicker: string;
+  title: React.ReactNode;
+  sub?: string;
+  align?: "left" | "center";
+}) {
+  return (
+    <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
+      <div className="font-mono text-[11px] uppercase tracking-[0.28em] text-orange">{kicker}</div>
+      <h2 className="mt-4 font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.02]">
+        {title}
+      </h2>
+      {sub && <p className={`mt-4 text-base text-muted-foreground max-w-2xl ${align === "center" ? "mx-auto" : ""}`}>{sub}</p>}
+    </div>
+  );
+}
+
 /* ---------- Hero ---------- */
 function Hero() {
-  const typed = useTyping(PROMPTS);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
+  const headlineWords = ["cognitive", "acceleration."];
+
   return (
-    <section id="hero" ref={ref} className="relative pt-32 pb-24 overflow-hidden">
-      <div className="absolute inset-0 blueprint-grid [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
+    <section id="hero" ref={ref} className="relative pt-36 pb-20 overflow-hidden">
+      <div className="absolute inset-0 blueprint-grid [mask-image:radial-gradient(ellipse_at_top,black_25%,transparent_75%)]" />
       <motion.div
         style={{ y }}
-        className="absolute left-1/2 top-20 -z-10 h-[560px] w-[860px] -translate-x-1/2 rounded-full bg-orange/15 blur-[120px]"
+        className="pointer-events-none absolute left-1/2 top-24 -z-10 h-[560px] w-[860px] -translate-x-1/2 rounded-full bg-orange/15 blur-[120px]"
       />
       <div className="mx-auto max-w-5xl px-6 text-center relative">
+        <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
+          // 01 · SYSTEM INITIALIZATION ENTRY
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-[11px] font-mono uppercase tracking-widest text-muted-foreground backdrop-blur"
+          className="relative mt-5 inline-flex items-center gap-2 rounded-full border border-orange/40 bg-card/40 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-orange backdrop-blur"
         >
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-mentor animate-pulse-dot" />
-          Mentor Online · v4.1 Aurora
+          <span
+            aria-hidden
+            className="absolute inset-0 -z-10 rounded-full bg-orange/15 blur-md"
+          />
+          ⌗ Drop the slow study loop
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.05 }}
-          className="mt-6 font-display text-5xl sm:text-7xl font-extrabold tracking-tight leading-[0.95]"
-        >
-          The cognitive engine
-          <br />
-          for <span className="brand-gradient-text text-glow-orange">STEM mastery.</span>
-        </motion.h1>
+        <h1 className="mt-6 font-display text-5xl sm:text-7xl font-extrabold tracking-tight leading-[0.95]">
+          <motion.span
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="block text-foreground"
+          >
+            Step into deep
+          </motion.span>
+          <span className="relative block">
+            <span
+              aria-hidden
+              className="absolute inset-0 -z-10 blur-2xl opacity-60 brand-gradient-text"
+            >
+              cognitive acceleration.
+            </span>
+            <span className="inline-flex flex-wrap justify-center gap-x-3">
+              {headlineWords.map((w, wi) =>
+                w.split("").map((ch, ci) => (
+                  <motion.span
+                    key={`${wi}-${ci}`}
+                    initial={{ y: 30, opacity: 0, rotateX: -60 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    transition={{
+                      duration: 0.55,
+                      delay: 0.25 + wi * 0.18 + ci * 0.025,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="brand-gradient-text inline-block"
+                  >
+                    {ch}
+                  </motion.span>
+                )),
+              )}
+            </span>
+          </span>
+        </h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          initial={{ opacity: 0, y: 12, filter: "blur(20px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.9, delay: 0.6 }}
           className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground"
         >
-          ChatGPT-grade reasoning. Apple Intelligence polish. Google Classroom workflow.
-          One workspace, engineered exclusively for scientists, engineers, and the
-          students becoming them.
+          For students closing the gap. Researchers compressing the loop.
+          Institutes engineering the next generation of scientific minds.
         </motion.p>
 
-        {/* Prompt field */}
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="mx-auto mt-10 max-w-2xl"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
-          <div className="group relative rounded-2xl border border-border bg-card/60 p-2 pl-4 backdrop-blur-xl shadow-[0_0_60px_-20px_rgba(255,122,0,0.35)]">
-            <div className="flex items-center gap-3">
-              <Sparkles className="h-4 w-4 text-orange shrink-0" />
-              <div className="flex-1 truncate py-2.5 text-left text-sm sm:text-[15px] text-foreground/90 font-mono">
-                {typed}
-                <span className="ml-0.5 inline-block h-4 w-[2px] -mb-0.5 bg-orange align-middle animate-caret" />
-              </div>
-              <motion.button
-                whileHover={{ scale: 1.015 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 320, damping: 22 }}
-                className="inline-flex items-center gap-1.5 rounded-xl brand-gradient px-4 py-2.5 text-sm font-semibold text-background shadow-[0_0_20px_rgba(255,181,71,0.35)]"
-              >
-                Initialize Workspace <ArrowRight className="h-4 w-4" />
-              </motion.button>
-            </div>
-          </div>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-mono text-muted-foreground">
-            {["Photosynthesis", "Tensor Calc", "Truss Solver", "Org Chem Mechanisms"].map((p) => (
-              <button
-                key={p}
-                className="rounded-full border border-border bg-card/40 px-2.5 py-1 hover:border-orange/60 hover:text-foreground transition"
-              >
-                {p}
-              </button>
-            ))}
-          </div>
+          <motion.a
+            href="#workspaces"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 320, damping: 22 }}
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl brand-gradient px-5 py-3 text-sm font-semibold text-background shadow-[0_0_32px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
+          >
+            <span
+              aria-hidden
+              className="absolute inset-0 bg-[linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.45)_50%,transparent_70%)] bg-[length:220%_100%] animate-[glyph-shimmer_2.6s_linear_infinite]"
+            />
+            <span className="relative">Initialize Workspace</span>
+            <motion.span className="relative inline-flex" whileHover={{ x: 4 }}>
+              <ArrowRight className="h-4 w-4" />
+            </motion.span>
+          </motion.a>
+          <a
+            href="#core-tech"
+            className="group relative inline-flex items-center gap-2 rounded-xl border border-border bg-card/40 px-5 py-3 text-sm font-semibold backdrop-blur transition hover:border-orange/60"
+          >
+            Tour the engine
+            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
         </motion.div>
 
-        {/* Live KPIs */}
+        {/* Live KPI HUD */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 1.15, duration: 0.8 }}
           className="mx-auto mt-14 grid max-w-3xl grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs"
         >
           {[
-            ["LATENCY", "42ms"],
-            ["THROUGHPUT", "85 t/s"],
-            ["CTX WINDOW", "1.0M"],
-            ["MENTOR CONF", "0.97"],
-          ].map(([k, v]) => (
-            <div
+            ["LATENCY", "42ms", "p50 edge"],
+            ["THROUGHPUT", "85 t/s", "stream"],
+            ["CTX WINDOW", "1.0M", "gemini-core"],
+            ["MENTOR CONF", "0.97", "align vector"],
+          ].map(([k, v, sub], i) => (
+            <motion.div
               key={k}
+              animate={{ y: [0, -3, 0] }}
+              transition={{ duration: 3.6, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
               className="rounded-xl border border-border bg-card/40 p-3 text-left backdrop-blur"
             >
               <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{k}</div>
               <div className="mt-1 text-base text-foreground">{v}</div>
-            </div>
+              <div className="text-[9px] uppercase tracking-widest text-muted-foreground/70 mt-0.5">
+                {sub}
+              </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
@@ -306,9 +444,8 @@ function TraceCard({
 }) {
   return (
     <div
-      className={`group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden ${className}`}
+      className={`group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-transform duration-300 hover:scale-[1.025] hover:border-orange/40 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--brand-orange)_45%,transparent)] ${className}`}
     >
-      {/* Animated conic gradient ring on hover */}
       <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <div
           className="absolute inset-[-100%] animate-[trace-spin_6s_linear_infinite]"
@@ -319,6 +456,7 @@ function TraceCard({
         />
         <div className="absolute inset-[1px] rounded-[15px] bg-card" />
       </div>
+      <div className="pointer-events-none absolute -bottom-12 left-1/2 -z-10 h-24 w-3/4 -translate-x-1/2 rounded-full bg-orange/0 group-hover:bg-orange/20 blur-2xl transition-colors duration-500" />
       <div className="relative">{children}</div>
     </div>
   );
@@ -338,7 +476,7 @@ const WORKSPACES = [
     icon: PenTool,
     code: "W-02",
     title: "Scribble Analysis Lab",
-    motion: "Vector-diff overlay · surgical cubic-bezier reveal",
+    motion: "Vector-diff overlay · surgical red-trace reveal",
     body: "Sketch a truss, a derivation, a circuit. A real-time logical reasoning engine ingests your hand-drawn vectors and surfaces structural, calculus, and notation errors before they cost you a grade.",
     tone: "gold",
   },
@@ -397,7 +535,7 @@ function Workspaces() {
     <section id="workspaces" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          kicker="// 02 · WORKSPACE MATRIX"
+          kicker="// 03 · OBSERVABLE INSTRUMENT CAPABILITIES"
           title={
             <>
               Eight workspaces.
@@ -427,11 +565,11 @@ function Workspaces() {
                           w.tone === "orange"
                             ? "bg-orange/15 text-orange"
                             : w.tone === "gold"
-                            ? "bg-gold/15 text-gold"
-                            : "bg-cyan/15 text-cyan"
+                              ? "bg-gold/15 text-gold"
+                              : "bg-cyan/15 text-cyan"
                         }`}
                       >
-                        <Icon className="h-4.5 w-4.5" />
+                        <Icon className="h-4 w-4" />
                       </div>
                       <span className="font-mono text-[10px] text-muted-foreground">{w.code}</span>
                     </div>
@@ -456,27 +594,6 @@ function Workspaces() {
   );
 }
 
-/* ---------- Section header ---------- */
-function SectionHeader({
-  kicker,
-  title,
-  sub,
-}: {
-  kicker: string;
-  title: React.ReactNode;
-  sub?: string;
-}) {
-  return (
-    <div className="max-w-3xl">
-      <div className="font-mono text-[11px] uppercase tracking-[0.25em] text-orange">{kicker}</div>
-      <h2 className="mt-4 font-display text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.02]">
-        {title}
-      </h2>
-      {sub && <p className="mt-4 text-base text-muted-foreground max-w-2xl">{sub}</p>}
-    </div>
-  );
-}
-
 /* ---------- Scribble Lab feature reveal ---------- */
 function ScribbleLab() {
   const ref = useRef<HTMLDivElement>(null);
@@ -490,7 +607,7 @@ function ScribbleLab() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <SectionHeader
-            kicker="// 03 · SCRIBBLE ANALYSIS LAB"
+            kicker="// 04 · MODULE BREAKDOWN: SCRIBBLE ANALYSIS"
             title={
               <>
                 Your sketch.
@@ -519,7 +636,6 @@ function ScribbleLab() {
           </div>
         </motion.div>
 
-        {/* Faux canvas display */}
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.96 }}
           animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
@@ -529,10 +645,10 @@ function ScribbleLab() {
             <div className="p-1.5">
               <div className="flex items-center justify-between px-3 py-2 font-mono text-[10px] text-muted-foreground border-b border-border">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-orange" />
+                  <span className="h-2 w-2 rounded-full bg-orange animate-pulse-dot" />
                   scribble.lab/session-7f3a
                 </div>
-                <div>VECTOR-DIFF v4.1</div>
+                <div className="text-cyan">VECTOR-DIFF v4.1</div>
               </div>
               <div className="relative aspect-[4/3] blueprint-grid rounded-xl bg-background/40 overflow-hidden">
                 <svg viewBox="0 0 400 300" className="absolute inset-0 h-full w-full">
@@ -542,7 +658,6 @@ function ScribbleLab() {
                       <stop offset="100%" stopColor="oklch(0.82 0.15 75)" />
                     </linearGradient>
                   </defs>
-                  {/* Truss */}
                   <motion.path
                     d="M40 240 L200 80 L360 240 Z M40 240 L360 240 M120 240 L200 80 M280 240 L200 80 M120 240 L280 240"
                     stroke="url(#strokeGrad)"
@@ -552,7 +667,6 @@ function ScribbleLab() {
                     animate={inView ? { pathLength: 1 } : {}}
                     transition={{ duration: 2.2, ease: "easeInOut" }}
                   />
-                  {/* Joints */}
                   {[
                     [40, 240],
                     [200, 80],
@@ -571,13 +685,22 @@ function ScribbleLab() {
                       transition={{ delay: 1.4 + i * 0.1, type: "spring", stiffness: 300 }}
                     />
                   ))}
-                  {/* Annotation */}
                   <motion.g
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ delay: 2.4, duration: 0.6 }}
                   >
-                    <circle cx="200" cy="80" r="14" fill="none" stroke="oklch(0.7 0.19 22)" strokeWidth="1.5" strokeDasharray="3 3" />
+                    <motion.circle
+                      cx="200"
+                      cy="80"
+                      r="14"
+                      fill="none"
+                      stroke="oklch(0.7 0.19 22)"
+                      strokeWidth="1.5"
+                      strokeDasharray="3 3"
+                      animate={{ r: [14, 18, 14], opacity: [1, 0.6, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    />
                     <text x="220" y="70" fill="oklch(0.7 0.19 22)" fontSize="10" fontFamily="JetBrains Mono">
                       apex load → axial Fmax
                     </text>
@@ -586,13 +709,18 @@ function ScribbleLab() {
               </div>
               <div className="grid grid-cols-3 gap-2 p-3 font-mono text-[10px]">
                 {[
-                  ["NODES", "5"],
-                  ["MEMBERS", "7"],
-                  ["DEFLECT", "0.4mm"],
-                ].map(([k, v]) => (
-                  <div key={k} className="rounded-md border border-border bg-background/40 px-2 py-1.5">
+                  ["NODES", "5", false],
+                  ["MEMBERS", "7", false],
+                  ["DEFLECT", "0.4mm", true],
+                ].map(([k, v, hot]) => (
+                  <div
+                    key={k as string}
+                    className={`rounded-md border px-2 py-1.5 ${
+                      hot ? "border-orange/40 bg-orange/10 animate-pulse" : "border-border bg-background/40"
+                    }`}
+                  >
                     <div className="text-muted-foreground">{k}</div>
-                    <div className="text-foreground text-xs">{v}</div>
+                    <div className={`text-xs ${hot ? "text-orange" : "text-foreground"}`}>{v}</div>
                   </div>
                 ))}
               </div>
@@ -621,7 +749,7 @@ function TerminalSection() {
       <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-5 gap-10 items-center">
         <div className="lg:col-span-2">
           <SectionHeader
-            kicker="// 04 · LIVE TELEMETRY"
+            kicker="// 05 · OBSERVABLE RUNTIME PERFORMANCE"
             title={
               <>
                 Verified by the engine,
@@ -664,28 +792,33 @@ function TerminalSection() {
                     initial={{ opacity: 0, x: -6 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.08 }}
+                    transition={{ delay: i * 0.18, duration: 0.4 }}
                     className="flex gap-3"
                   >
                     <span className="text-muted-foreground/60 w-8">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span
-                      className={`w-14 ${
+                      className={`w-16 ${
                         l.t === "ok"
                           ? "text-mentor"
                           : l.t === "mentor"
-                          ? "text-mentor"
-                          : l.t === "stream"
-                          ? "text-cyan"
-                          : l.t === "wait"
-                          ? "text-orange"
-                          : "text-gold"
+                            ? "text-mentor"
+                            : l.t === "stream"
+                              ? "text-cyan"
+                              : l.t === "wait"
+                                ? "text-orange"
+                                : "text-gold"
                       }`}
                     >
                       [{l.t}]
                     </span>
-                    <span className="text-foreground/85">{l.text}</span>
+                    <span className="text-foreground/85 flex-1">
+                      {l.text}
+                      {l.t === "wait" && (
+                        <span className="ml-1 inline-block h-3 w-2 -mb-0.5 bg-orange align-middle animate-[caret-blink_500ms_step-end_infinite]" />
+                      )}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -697,7 +830,7 @@ function TerminalSection() {
   );
 }
 
-/* ---------- CTA / Footer ---------- */
+/* ---------- CTA + Footer ---------- */
 function CtaFooter() {
   return (
     <section id="pricing" className="relative py-28">
@@ -706,7 +839,7 @@ function CtaFooter() {
           <div className="relative px-8 py-16 sm:py-20">
             <div className="absolute inset-0 blueprint-grid opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
             <div className="relative">
-              <div className="inline-flex items-center gap-2 rounded-full border border-orange/40 bg-orange/10 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-orange">
+              <div className="inline-flex items-center gap-2 rounded-full border border-orange/40 bg-orange/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-orange">
                 <CircuitBoard className="h-3.5 w-3.5" /> Drop the slow study loop
               </div>
               <h2 className="mt-6 font-display text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.0]">
@@ -715,17 +848,23 @@ function CtaFooter() {
                 <span className="brand-gradient-text text-glow-orange">cognitive acceleration.</span>
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-                For students closing the gap. Researchers compressing the loop. Institutes engineering the next generation of scientific minds.
+                For students closing the gap. Researchers compressing the loop.
+                Institutes engineering the next generation of scientific minds.
               </p>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                 <motion.a
-                  whileHover={{ scale: 1.015 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 320, damping: 22 }}
                   href="#hero"
-                  className="inline-flex items-center gap-1.5 rounded-xl brand-gradient px-5 py-3 text-sm font-semibold text-background shadow-[0_0_28px_rgba(255,181,71,0.4)]"
+                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl brand-gradient px-5 py-3 text-sm font-semibold text-background shadow-[0_0_28px_color-mix(in_oklab,var(--brand-gold)_45%,transparent)]"
                 >
-                  Initialize Workspace <ArrowRight className="h-4 w-4" />
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 bg-[linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.45)_50%,transparent_70%)] bg-[length:220%_100%] animate-[glyph-shimmer_2.6s_linear_infinite]"
+                  />
+                  <span className="relative">Initialize Workspace</span>
+                  <ArrowRight className="relative h-4 w-4" />
                 </motion.a>
                 <a
                   href="#core-tech"
@@ -738,12 +877,29 @@ function CtaFooter() {
           </div>
         </TraceCard>
 
-        <footer className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border pt-6 font-mono text-[11px] text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-mentor animate-pulse-dot" />
-            ALL SYSTEMS NOMINAL · v4.1 AURORA
+        <footer className="mt-16 border-t border-border pt-8">
+          <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[13px]">
+            {[
+              ["Core Dashboard", "#hero"],
+              ["System Documentation", "#core-tech"],
+              ["API Pipeline", "#research-vault"],
+              ["Institutional Licensing", "#pricing"],
+            ].map(([l, href]) => (
+              <ShimmerLink key={l} href={href}>
+                {l}
+              </ShimmerLink>
+            ))}
+          </nav>
+          <div className="mt-6 flex justify-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-mentor/40 bg-mentor/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-mentor">
+              <span className="h-1.5 w-1.5 rounded-full bg-mentor animate-pulse-dot" />
+              All systems nominal · v4.1 Aurora
+            </div>
           </div>
-          <div>© {new Date().getFullYear()} SciForge AI · Forged for STEM</div>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground">
+            <div>© 2026 SciForge AI</div>
+            <div className="tracking-[0.22em] uppercase">Forged for STEM</div>
+          </div>
         </footer>
       </div>
     </section>
@@ -752,13 +908,12 @@ function CtaFooter() {
 
 /* ---------- Page ---------- */
 export default function SciForgeLanding() {
-  const t = useTheme();
+  const t = useChrome();
   return (
     <div id="top" className="relative min-h-screen bg-background text-foreground overflow-hidden">
-      <TelemetryStream side="left" />
-      <TelemetryStream side="right" />
       <Nav {...t} />
       <Hero />
+      <TelemetryBanner />
       <Workspaces />
       <ScribbleLab />
       <TerminalSection />
