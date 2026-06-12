@@ -1,5 +1,5 @@
 {
-  "// vercel-404-routing-fix-v1": "Build cache-bust comment for Vercel routing fix",
+  "// tanstack-start-engine-override-v2": "Build cache-bust for TanStack Start serverless engine override",
   "name": "tanstack_start_ts",
   "private": true,
   "sideEffects": false,
