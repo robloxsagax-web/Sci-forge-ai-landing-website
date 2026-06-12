@@ -1,29 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
+import SciForgeLanding from "@/components/sciforge/SciForgeLanding";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "SciForge AI — The Cognitive Engine for STEM" },
+      { name: "description", content: "AI STEM mentor with scribble analysis, quantum research, adaptive quizzes, and a dyslexia-friendly accessibility engine." },
+      { property: "og:title", content: "SciForge AI — The Cognitive Engine for STEM" },
+      { property: "og:description", content: "ChatGPT + Apple Intelligence + Google Classroom, engineered for STEM mastery." },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <SciForgeLanding />;
 }
