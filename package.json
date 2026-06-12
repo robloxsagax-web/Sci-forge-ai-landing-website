@@ -1,5 +1,5 @@
 {
-  "// tanstack-start-engine-override-v2": "Build cache-bust for TanStack Start serverless engine override",
+  "// vite-static-engine-override-v3": "Cache-bust for Vite static SPA routing override",
   "name": "tanstack_start_ts",
   "private": true,
   "sideEffects": false,
