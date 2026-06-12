@@ -236,9 +236,11 @@ export function TraceCard({
   onClick?: () => void;
 }) {
   return (
-    <div
+    <motion.div
       onClick={onClick}
-      className={`group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-transform duration-300 hover:scale-[1.025] hover:border-orange/40 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--brand-orange)_45%,transparent)] ${className}`}
+      whileHover={{ scale: 1.025, y: -2 }}
+      transition={{ type: "spring", mass: 0.5, stiffness: 120, damping: 16 }}
+      className={`group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-[#FF7A00] hover:shadow-[0_0_25px_rgba(255,122,0,0.12)] ${className}`}
     >
       <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <div
@@ -252,7 +254,7 @@ export function TraceCard({
       </div>
       <div className="pointer-events-none absolute -bottom-12 left-1/2 -z-10 h-24 w-3/4 -translate-x-1/2 rounded-full bg-orange/0 group-hover:bg-orange/20 blur-2xl transition-colors duration-500" />
       <div className="relative">{children}</div>
-    </div>
+    </motion.div>
   );
 }
 

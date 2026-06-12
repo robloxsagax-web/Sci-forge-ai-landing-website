@@ -19,7 +19,7 @@ import "stream";
 import "../_libs/isbot.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
-const appCss = "/assets/styles-CQFuqt8Q.css";
+const appCss = "/assets/styles-Cpyb8hSj.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -227,10 +227,12 @@ function TraceCard({
   onClick
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    "div",
+    motion.div,
     {
       onClick,
-      className: `group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-transform duration-300 hover:scale-[1.025] hover:border-orange/40 hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--brand-orange)_45%,transparent)] ${className}`,
+      whileHover: { scale: 1.025, y: -2 },
+      transition: { type: "spring", mass: 0.5, stiffness: 120, damping: 16 },
+      className: `group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-[#FF7A00] hover:shadow-[0_0_25px_rgba(255,122,0,0.12)] ${className}`,
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -380,7 +382,7 @@ function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SiteShell, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) }) });
 }
-const $$splitComponentImporter$3 = () => import("./propulsion-CRz7LVI8.mjs");
+const $$splitComponentImporter$3 = () => import("./propulsion-CjCCFA_z.mjs");
 const Route$3 = createFileRoute("/propulsion")({
   head: () => ({
     meta: [{
@@ -398,7 +400,7 @@ const Route$3 = createFileRoute("/propulsion")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-const $$splitComponentImporter$2 = () => import("./pricing-BTPoWWyJ.mjs");
+const $$splitComponentImporter$2 = () => import("./pricing-Di2slfY-.mjs");
 const Route$2 = createFileRoute("/pricing")({
   head: () => ({
     meta: [{
@@ -416,7 +418,7 @@ const Route$2 = createFileRoute("/pricing")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./architecture-E5o2K3_7.mjs");
+const $$splitComponentImporter$1 = () => import("./architecture-D1PtoUoD.mjs");
 const Route$1 = createFileRoute("/architecture")({
   head: () => ({
     meta: [{
@@ -434,7 +436,7 @@ const Route$1 = createFileRoute("/architecture")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-C_1YGJnf.mjs");
+const $$splitComponentImporter = () => import("./index-B7zYm8Q1.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{

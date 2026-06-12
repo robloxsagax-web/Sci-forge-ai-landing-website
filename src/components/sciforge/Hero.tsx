@@ -178,20 +178,18 @@ export function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="block text-foreground"
+            className="block text-white drop-shadow-sm"
           >
             Step into deep
           </motion.span>
           <span className="relative block mt-2">
-            <span aria-hidden className="absolute inset-0 -z-10 blur-2xl opacity-60 brand-gradient-text">
-              cognitive acceleration.
-            </span>
-            <span className="block text-foreground brand-gradient-text tracking-normal">
+            <span aria-hidden className="absolute inset-0 -z-10 blur-2xl opacity-50 bg-gradient-to-r from-[#FF7A00] to-[#FFB547]" />
+            <span className="block bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,122,0,0.35)] tracking-normal font-extrabold">
               cognitive
             </span>
           </span>
           <span className="relative block mt-2">
-            <span className="block text-foreground brand-gradient-text tracking-normal">
+            <span className="block bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,122,0,0.35)] tracking-normal font-extrabold">
               acceleration.
             </span>
           </span>

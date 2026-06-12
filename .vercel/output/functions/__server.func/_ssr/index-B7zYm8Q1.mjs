@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router--YEx1GAN.mjs";
+import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-CGPChiO2.mjs";
 import { a as useScroll, b as useTransform, m as motion } from "../_libs/framer-motion.mjs";
 import { A as ArrowRight, c as ChevronRight, e as Brain, P as PenTool, f as Telescope, N as NotebookPen, g as ListChecks, h as Network, R as Rocket, i as FolderLock, a as Sparkles, j as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
@@ -178,15 +178,15 @@ function Hero() {
             initial: { opacity: 0, y: 18 },
             animate: { opacity: 1, y: 0 },
             transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-            className: "block text-foreground",
+            className: "block text-white drop-shadow-sm",
             children: "Step into deep"
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative block mt-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { "aria-hidden": true, className: "absolute inset-0 -z-10 blur-2xl opacity-60 brand-gradient-text", children: "cognitive acceleration." }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block text-foreground brand-gradient-text tracking-normal", children: "cognitive" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { "aria-hidden": true, className: "absolute inset-0 -z-10 blur-2xl opacity-50 bg-gradient-to-r from-[#FF7A00] to-[#FFB547]" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,122,0,0.35)] tracking-normal font-extrabold", children: "cognitive" })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "relative block mt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block text-foreground brand-gradient-text tracking-normal", children: "acceleration." }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "relative block mt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,122,0,0.35)] tracking-normal font-extrabold", children: "acceleration." }) })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         motion.p,
