@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PropulsionRouteImport } from './routes/propulsion'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as IndexRouteImport } from './routes/index'
 
 const PropulsionRoute = PropulsionRouteImport.update({
   id: '/propulsion',
   path: '/propulsion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArchitectureRoute = ArchitectureRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/pricing': typeof PricingRoute
   '/propulsion': typeof PropulsionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/pricing': typeof PricingRoute
   '/propulsion': typeof PropulsionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/pricing': typeof PricingRoute
   '/propulsion': typeof PropulsionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/architecture' | '/propulsion'
+  fullPaths: '/' | '/architecture' | '/pricing' | '/propulsion'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/architecture' | '/propulsion'
-  id: '__root__' | '/' | '/architecture' | '/propulsion'
+  to: '/' | '/architecture' | '/pricing' | '/propulsion'
+  id: '__root__' | '/' | '/architecture' | '/pricing' | '/propulsion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  PricingRoute: typeof PricingRoute
   PropulsionRoute: typeof PropulsionRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/propulsion'
       fullPath: '/propulsion'
       preLoaderRoute: typeof PropulsionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/architecture': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArchitectureRoute: ArchitectureRoute,
+  PricingRoute: PricingRoute,
   PropulsionRoute: PropulsionRoute,
 }
 export const routeTree = rootRouteImport
