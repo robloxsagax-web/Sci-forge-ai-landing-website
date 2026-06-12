@@ -29,7 +29,7 @@ function TargetSection() {
     <section className="relative py-24">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          kicker="// 04 · WORKSPACE ADAPTATION"
+          kicker="04 · WORKSPACE ADAPTATION"
           title={
             <>
               Two minds.
@@ -103,7 +103,7 @@ function ClassroomIntegration() {
           <div className="grid lg:grid-cols-2 gap-0">
             <div className="p-10">
               <div className="font-mono text-[11px] uppercase tracking-[0.28em] text-orange">
-                // 05 · INTUITIVE PLATFORM INTEGRATION
+                05 · INTUITIVE PLATFORM INTEGRATION
               </div>
               <h3 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
                 One <span className="brand-gradient-text">fluid surface</span>{" "}
@@ -189,7 +189,7 @@ export function PropulsionPage() {
         <div className="absolute inset-0 blueprint-grid [mask-image:radial-gradient(ellipse_at_top,black_25%,transparent_75%)]" />
         <div className="relative mx-auto max-w-5xl px-6 text-center">
           <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
-            // ACADEMIC PROPULSION
+            ACADEMIC PROPULSION
           </div>
           <h1 className="mt-5 font-display text-5xl sm:text-6xl font-extrabold tracking-tight leading-[0.98]">
             Workspaces that{" "}

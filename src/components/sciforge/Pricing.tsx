@@ -64,7 +64,7 @@ export function PricingPage() {
         <div className="absolute inset-0 blueprint-grid [mask-image:radial-gradient(ellipse_at_top,black_25%,transparent_75%)]" />
         <div className="relative mx-auto max-w-5xl px-6 text-center">
           <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
-            // 05 · MEMBERSHIP INFRASTRUCTURE
+            05 · MEMBERSHIP INFRASTRUCTURE
           </div>
           <h1 className="mt-5 font-display text-5xl sm:text-6xl font-extrabold tracking-tight leading-[0.98]">
             Transparent value.{" "}
@@ -180,7 +180,7 @@ export function PricingPage() {
       <section className="relative py-24">
         <div className="mx-auto max-w-5xl px-6">
           <SectionHeader
-            kicker="// FAQ MATRIX"
+            kicker="FAQ MATRIX"
             title={
               <>
                 Honest answers.

@@ -151,8 +151,6 @@ export function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
-  const headlineWords = ["cognitive", "acceleration."];
-
   return (
     <section id="hero" ref={ref} className="relative pt-36 pb-20 overflow-hidden">
       <div className="absolute inset-0 blueprint-grid [mask-image:radial-gradient(ellipse_at_top,black_25%,transparent_75%)]" />
@@ -162,7 +160,7 @@ export function Hero() {
       />
       <div className="mx-auto max-w-5xl px-6 text-center relative">
         <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
-          // 01 · COGNITIVE ENTRANCE
+          01 · COGNITIVE ENTRANCE
         </div>
 
         <motion.div
@@ -175,7 +173,7 @@ export function Hero() {
           ⌗ Drop the slow study loop
         </motion.div>
 
-        <h1 className="mt-6 font-display text-5xl sm:text-7xl font-extrabold tracking-tight leading-[0.95]">
+        <h1 className="mt-6 font-display text-5xl sm:text-7xl font-extrabold tracking-wide leading-[1.1]">
           <motion.span
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -184,28 +182,17 @@ export function Hero() {
           >
             Step into deep
           </motion.span>
-          <span className="relative block">
+          <span className="relative block mt-2">
             <span aria-hidden className="absolute inset-0 -z-10 blur-2xl opacity-60 brand-gradient-text">
               cognitive acceleration.
             </span>
-            <span className="inline-flex flex-wrap justify-center gap-x-3">
-              {headlineWords.map((w, wi) =>
-                w.split("").map((ch, ci) => (
-                  <motion.span
-                    key={`${wi}-${ci}`}
-                    initial={{ y: 30, opacity: 0, rotateX: -60 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    transition={{
-                      duration: 0.55,
-                      delay: 0.25 + wi * 0.18 + ci * 0.025,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="brand-gradient-text inline-block"
-                  >
-                    {ch}
-                  </motion.span>
-                )),
-              )}
+            <span className="block text-foreground brand-gradient-text tracking-normal">
+              cognitive
+            </span>
+          </span>
+          <span className="relative block mt-2">
+            <span className="block text-foreground brand-gradient-text tracking-normal">
+              acceleration.
             </span>
           </span>
         </h1>

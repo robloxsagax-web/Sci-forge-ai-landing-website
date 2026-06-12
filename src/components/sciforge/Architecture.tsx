@@ -15,7 +15,7 @@ function ScribbleLab() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <SectionHeader
-            kicker="// 03 · CANVAS VECTOR INGESTION"
+            kicker="03 · CANVAS VECTOR INGESTION"
             title={
               <>
                 Your sketch.
@@ -229,7 +229,7 @@ function HybridOrchestration() {
         </TraceCard>
         <div>
           <SectionHeader
-            kicker="// 04 · MULTI-MODEL HYBRID"
+            kicker="04 · MULTI-MODEL HYBRID"
             title={
               <>
                 Three engines.
@@ -252,7 +252,7 @@ function EloDiagnostics() {
       <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <SectionHeader
-            kicker="// 05 · ACADEMIC ELO DIAGNOSTICS"
+            kicker="05 · ACADEMIC ELO DIAGNOSTICS"
             title={
               <>
                 Calibration that
@@ -306,7 +306,7 @@ export function ArchitecturePage() {
         <div className="absolute inset-0 blueprint-grid [mask-image:radial-gradient(ellipse_at_top,black_25%,transparent_75%)]" />
         <div className="relative mx-auto max-w-5xl px-6 text-center">
           <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
-            // 03 · DEEP ENGINE ARCHITECTURE
+            03 · DEEP ENGINE ARCHITECTURE
           </div>
           <h1 className="mt-5 font-display text-5xl sm:text-6xl font-extrabold tracking-tight leading-[0.98]">
             Engineered for{" "}

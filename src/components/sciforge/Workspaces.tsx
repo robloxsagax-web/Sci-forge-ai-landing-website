@@ -8,8 +8,20 @@ import {
   Network,
   Rocket,
   FolderLock,
+  Zap,
+  Eye,
+  Calculator,
+  FileText,
+  Target,
+  GitBranch,
+  Gauge,
+  Shield,
 } from "lucide-react";
 import { SectionHeader, TraceCard } from "./chrome";
+
+// Spring animation profiles
+export const SPRING_LAYOUT = { mass: 0.6, tension: 140, friction: 18 };
+export const GLIDE_LAYOUT = { ease: [0.16, 1, 0.3, 1], duration: 0.8 };
 
 const WORKSPACES = [
   {
@@ -18,8 +30,10 @@ const WORKSPACES = [
     title: "Core Intelligence Console",
     redirectTarget: "core-intelligence-console",
     motion: "Stream-pill ignition · 60fps token cascade",
-    body: "The central chat nexus. Fire multi-model stream queries and watch answers cascade across a reasoning pipeline tuned for deep academic velocity.",
+    body: "The definitive cognitive command center for advanced academic research. Features an integrated multi-model routing orchestration environment capable of processing parallel live queries. Built-in interactive suggestion nodes let users instantly run complex concepts with a single click. Includes automated code structure generation, type-guarded output validations, and clear LaTeX equations for clean rendering of physics and mathematical formulas.",
     tone: "orange",
+    interactionEngine: "A running multi-tier query stream detailing token construction outputs alongside real-time accuracy scoring benchmarks.",
+    features: ["Multi-model routing", "60fps token cascade", "LaTeX rendering", "Type validation"],
   },
   {
     icon: PenTool,
@@ -27,8 +41,10 @@ const WORKSPACES = [
     title: "Scribble Analysis Lab",
     redirectTarget: "scribble-analysis-lab",
     motion: "Vector-diff overlay · surgical cubic-bezier path reveal",
-    body: "Processes your hand-drawn calculus derivations, trusses, and circuits. Instantly ingests vectors to flag exact geometric and mathematical notation errors.",
+    body: "An advanced structural visual reasoning module built atop a 60Hz vector-diff processing framework. Ingests raw hand-drawn user inputs, normalizing complex sketches into crisp SVG vector data arrays. Features an integrated symbolic algebra matrix and engineering physics solver that automatically evaluates node points, beam vectors, and load values. Flags mechanical logic flaws, structural deflection anomalies, and calculus notation errors with precise inline highlights linked directly to foundational physics principles.",
     tone: "gold",
+    interactionEngine: "A production-ready canvas schematic tracking a 5-node mechanics truss with live delta correction lines.",
+    features: ["60Hz vector processing", "SVG normalization", "Physics solver", "Error highlighting"],
   },
   {
     icon: Telescope,
@@ -36,8 +52,10 @@ const WORKSPACES = [
     title: "Quantum Research Engine",
     redirectTarget: "quantum-research-engine",
     motion: "Telemetry-glyph scroll · deep-field parallax",
-    body: "Built for complex academic investigations. Executes deep-dive variable derivations and symbolic algebra at 1e-14 precision.",
+    body: "Engineered exclusively for extreme scientific computing and high-precision academic deep-dives. Utilizes symbolic algebra integration running at a native precision threshold of 1e-14. Capable of handling massive mathematical calculations, multi-variable calculus loops, and complex organic chemistry reaction tracking without context execution dropouts.",
     tone: "cyan",
+    interactionEngine: "A rolling background terminal showing live calculation steps and data log validation traces.",
+    features: ["1e-14 precision", "Symbolic algebra", "Multi-var calculus", "Reaction tracking"],
   },
   {
     icon: NotebookPen,
@@ -45,8 +63,10 @@ const WORKSPACES = [
     title: "Notes Generator",
     redirectTarget: "notes-generator",
     motion: "Sheet-fold cascade · modular accordion bloom",
-    body: "Auto-compiles structured summaries, modular concept breakdowns, and exam-ready briefs modeled directly on professional scientific outlines.",
+    body: "An automated markdown processing layout that compiles clean, structured study blueprints, comprehensive revision notes, and exam-ready briefs. Designed to mirror how researchers naturally catalog knowledge systems—completely eliminating surface-level summaries in favor of layered informational architectures.",
     tone: "orange",
+    interactionEngine: "Interactive, nested structural accordions showing layered breakdowns from foundational concepts to advanced technical implementations.",
+    features: ["Markdown processing", "Layered structure", "Exam-ready briefs", "Knowledge mapping"],
   },
   {
     icon: ListChecks,
@@ -54,8 +74,10 @@ const WORKSPACES = [
     title: "Quiz Generator",
     redirectTarget: "quiz-generator",
     motion: "Difficulty-tier ladder · Elo-curve sweep",
-    body: "Fires customized testing fields mapped to strict difficulty tiers, running diagnostic metrics to track exactly which sub-skills have leveled up.",
+    body: "Generates custom academic testing fields mapped directly to rigid difficulty paths. Employs a dynamic calibration engine that adapts question difficulty to student skill levels, calculating knowledge retention metrics via precise performance profiles.",
     tone: "gold",
+    interactionEngine: "An interactive difficulty selector showing skill levels adjusting across an animated tracking curve.",
+    features: ["Difficulty calibration", "Elo tracking", "Skill profiling", "Adaptive testing"],
   },
   {
     icon: Network,
@@ -63,8 +85,10 @@ const WORKSPACES = [
     title: "Concept Dependency Map",
     redirectTarget: "concept-dependency-map",
     motion: "Force-graph crystallization · edge-glow trace",
-    body: "An interactive node web tracking prerequisite knowledge. See exactly what structural gates block your mastery of advanced engineering concepts.",
+    body: "An interactive visual node relationship framework mapping out required prerequisite pathways for STEM subjects. Traces dependencies across topics so students can visualize exactly what knowledge blocks must be mastered before tackling advanced scientific modules.",
     tone: "cyan",
+    interactionEngine: "A dynamic visual canvas graph with floating nodes, connecting lines, and glowing edge trails showing learning progression.",
+    features: ["Prerequisite mapping", "Node visualization", "Dependency tracking", "Learning paths"],
   },
   {
     icon: Rocket,
@@ -72,8 +96,10 @@ const WORKSPACES = [
     title: "Academic Propulsion",
     redirectTarget: "academic-propulsion",
     motion: "Skill-vector launch · radial velocity rings",
-    body: "Generates personalized learning roadmaps with dynamic skill-velocity vectors rendered like a live flight telemetry HUD.",
+    body: "Tracks personalized study roadmaps and dynamic performance vectors in real time. Renders growth data through a premium flight telemetry interface, adjusting learning paths based on master tracking statistics.",
     tone: "orange",
+    interactionEngine: "Radial progress rings and vector charts tracking comprehension velocities across core modules.",
+    features: ["Progress tracking", "Telemetry HUD", "Velocity vectors", "Adaptive paths"],
   },
   {
     icon: FolderLock,
@@ -81,8 +107,10 @@ const WORKSPACES = [
     title: "Research Portfolio",
     redirectTarget: "research-portfolio",
     motion: "Vault unlock · AES-glyph shimmer",
-    body: "A secure, zero-mock-data vault consolidating every generated artifact—notes, quizzes, lab outputs, and scribble diffs—into one archive.",
+    body: "A highly secure, zero-mock-data storage vault that groups and catalogs all user artifacts—including generated formulas, quiz histories, notes, and scribble diagnostics—into an organized local library.",
     tone: "gold",
+    interactionEngine: "A secure structural library interface with clear document filters and data export controls.",
+    features: ["AES-256 encryption", "Zero-mock data", "Artifact cataloging", "Export controls"],
   },
 ] as const;
 
@@ -91,7 +119,7 @@ export function Workspaces() {
     <section id="workspaces" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          kicker="// 02 · CORE WORKSPACE ARTIFACTS"
+          kicker="02 · CORE WORKSPACE ARTIFACTS"
           title={
             <>
               Eight workspaces.
@@ -135,7 +163,20 @@ export function Workspaces() {
                     <h3 className="mt-4 font-display text-lg font-bold tracking-tight">
                       {w.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.body}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">{w.body}</p>
+                    
+                    {/* Feature pills */}
+                    <div className="mt-3 flex flex-wrap gap-1">
+                      {w.features.slice(0, 3).map((feature) => (
+                        <span
+                          key={feature}
+                          className="rounded-full border border-border/50 bg-background/30 px-2 py-0.5 font-mono text-[9px] text-muted-foreground/70"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    
                     <div className="mt-4 border-t border-border pt-3">
                       <div className="text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70">
                         Motion profile
