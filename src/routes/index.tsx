@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import SciForgeLanding from "@/components/sciforge/SciForgeLanding";
+import { LandingPage } from "@/components/sciforge/Landing";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,5 +14,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return <SciForgeLanding />;
+  return <LandingPage />;
 }

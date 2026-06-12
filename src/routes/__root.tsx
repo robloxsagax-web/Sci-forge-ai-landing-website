@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteShell } from "../components/sciforge/chrome";
 
 function NotFoundComponent() {
   return (
@@ -130,7 +131,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <main>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        <SiteShell>
+          <Outlet />
+        </SiteShell>
       </main>
     </QueryClientProvider>
   );
