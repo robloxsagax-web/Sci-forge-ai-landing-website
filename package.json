@@ -1,4 +1,5 @@
 {
+  "// vercel-404-routing-fix-v1": "Build cache-bust comment for Vercel routing fix",
   "name": "tanstack_start_ts",
   "private": true,
   "sideEffects": false,
