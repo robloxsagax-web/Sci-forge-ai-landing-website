@@ -1,13 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowRight, ChevronRight, Sparkles, SendHorizontal } from "lucide-react";
+import { ArrowRight, ChevronRight, Sparkles, SendHorizontal, BookOpen, FileText, Target, FolderKanban } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 const SUGGESTIONS = [
-  { label: "Photosynthesis", prompt: "Break down the light-dependent reactions of photosynthesis." },
-  { label: "Tensor Calc", prompt: "Derive the Christoffel symbols for a 2-sphere metric, step by step." },
-  { label: "Truss Solver", prompt: "Solve this hand-drawn truss for axial forces — joint method." },
-  { label: "Org Chem Mechanisms", prompt: "Walk through the SN2 mechanism for 2-bromobutane + NaOH." },
+  { emoji: "🌿", label: "Teach me Photosynthesis", prompt: "Explain the light-dependent reactions of photosynthesis in detail." },
+  { emoji: "⚡", label: "Create a quiz on Physics", prompt: "Generate a quiz on Newton's Laws of Motion with varying difficulty levels." },
+  { emoji: "📝", label: "Generate study notes", prompt: "Create comprehensive study notes on cellular biology fundamentals." },
+  { emoji: "🔬", label: "Explain Newton's Laws", prompt: "Walk through Newton's Three Laws of Motion with real-world examples." },
+];
+
+// Metric cards for the dashboard
+const METRICS = [
+  { icon: Target, value: "0", label: "Questions Solved" },
+  { icon: FileText, value: "0", label: "Notes Generated" },
+  { icon: BookOpen, value: "0", label: "Quizzes Completed" },
+  { icon: FolderKanban, value: "0", label: "Research Projects" },
+];
+
+// System status panel
+const SYSTEM_STATUS = [
+  { label: "Model", value: "Llama 3.3" },
+  { label: "Latency", value: "42ms" },
+  { label: "Tokens/s", value: "85 t/s" },
 ];
 
 /* Live, looping prompt anchor that mimics the workspace input. */
@@ -102,14 +117,14 @@ function PromptAnchor() {
               <button
                 key={s.label}
                 onClick={() => setActive(i)}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-wider transition-all ${
+                className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] transition-all ${
                   active === i
                     ? "border-orange/60 bg-orange/15 text-orange shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
                     : "border-border bg-background/40 text-muted-foreground hover:text-foreground hover:border-orange/40"
                 }`}
               >
-                <span className="h-1 w-1 rounded-full bg-current" />
-                {s.label}
+                <span>{s.emoji}</span>
+                <span className="font-medium">{s.label}</span>
               </button>
             ))}
 
@@ -206,6 +221,50 @@ export function Hero() {
         </motion.p>
 
         <PromptAnchor />
+
+        {/* Metrics Dashboard */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3"
+        >
+          {METRICS.map((m, i) => {
+            const Icon = m.icon;
+            return (
+              <div
+                key={m.label}
+                className="rounded-xl border border-border bg-card/40 px-4 py-3 backdrop-blur"
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <Icon className="h-4 w-4 text-orange/70" />
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                    {m.label}
+                  </span>
+                </div>
+                <div className="font-display text-2xl font-bold text-foreground">
+                  {m.value}
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
+
+        {/* System Status Panel */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-4 inline-flex items-center gap-4 rounded-full border border-border/50 bg-background/30 px-4 py-2 font-mono text-[10px] text-muted-foreground/70"
+        >
+          {SYSTEM_STATUS.map((s, i) => (
+            <span key={s.label} className="flex items-center gap-1.5">
+              <span className="text-foreground/50">{s.label}:</span>
+              <span className="text-cyan">{s.value}</span>
+              {i < SYSTEM_STATUS.length - 1 && <span className="text-border mx-1">|</span>}
+            </span>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}

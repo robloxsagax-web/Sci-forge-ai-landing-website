@@ -111,7 +111,7 @@ export function Nav({ theme, setTheme, dyslexic, setDyslexic }: ReturnType<typeo
           <Link to="/" className="flex items-center gap-2.5">
             <BrandMark />
             <span className="font-display text-[15px] font-extrabold tracking-[0.18em] uppercase">
-              Sci<span className="text-orange">·</span>Forge AI
+              SCI<span className="text-white">FORGE</span><span className="bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent">AI</span>
             </span>
             <span className="hidden md:inline-flex items-center gap-1.5 ml-3 pl-3 border-l border-border font-mono text-[10px] text-muted-foreground">
               <span className="h-1 w-1 rounded-full bg-mentor animate-pulse-dot" />
@@ -286,7 +286,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground">
-          <div>© 2026 SciForge AI</div>
+          <div>© 2026 SCIFORGEAI</div>
           <div className="tracking-[0.22em] uppercase">Forged for STEM</div>
         </div>
       </div>

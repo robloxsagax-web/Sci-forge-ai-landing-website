@@ -19,7 +19,7 @@ import "stream";
 import "../_libs/isbot.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
-const appCss = "/assets/styles-Cpyb8hSj.css";
+const appCss = "/assets/styles-B9PmUTO2.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -125,9 +125,9 @@ function Nav({ theme, setTheme, dyslexic, setDyslexic }) {
     /* @__PURE__ */ jsxRuntimeExports.jsxs(Link, { to: "/", className: "flex items-center gap-2.5", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(BrandMark, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-display text-[15px] font-extrabold tracking-[0.18em] uppercase", children: [
-        "Sci",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-orange", children: "·" }),
-        "Forge AI"
+        "SCI",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white", children: "FORGE" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent", children: "AI" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "hidden md:inline-flex items-center gap-1.5 ml-3 pl-3 border-l border-border font-mono text-[10px] text-muted-foreground", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "h-1 w-1 rounded-full bg-mentor animate-pulse-dot" }),
@@ -273,7 +273,7 @@ function SiteFooter() {
       "All systems nominal · v4.1 Aurora"
     ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: "© 2026 SciForge AI" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: "© 2026 SCIFORGEAI" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "tracking-[0.22em] uppercase", children: "Forged for STEM" })
     ] })
   ] }) });
@@ -382,7 +382,7 @@ function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SiteShell, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) }) });
 }
-const $$splitComponentImporter$3 = () => import("./propulsion-Ddzn-rQ_.mjs");
+const $$splitComponentImporter$3 = () => import("./propulsion-RYyxDfGb.mjs");
 const Route$3 = createFileRoute("/propulsion")({
   head: () => ({
     meta: [{
@@ -400,7 +400,7 @@ const Route$3 = createFileRoute("/propulsion")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-const $$splitComponentImporter$2 = () => import("./pricing-276PSDDm.mjs");
+const $$splitComponentImporter$2 = () => import("./pricing-Dkw7oISy.mjs");
 const Route$2 = createFileRoute("/pricing")({
   head: () => ({
     meta: [{
@@ -418,7 +418,7 @@ const Route$2 = createFileRoute("/pricing")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./architecture-UCKjU3bI.mjs");
+const $$splitComponentImporter$1 = () => import("./architecture-B5npoyeR.mjs");
 const Route$1 = createFileRoute("/architecture")({
   head: () => ({
     meta: [{
@@ -436,7 +436,7 @@ const Route$1 = createFileRoute("/architecture")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-Ctjp8IwY.mjs");
+const $$splitComponentImporter = () => import("./index-DyzvIBxs.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{

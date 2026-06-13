@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { T as TraceCard, S as SectionHeader } from "./router-BjRbeK34.mjs";
+import { T as TraceCard, S as SectionHeader } from "./router-CBjVi-4k.mjs";
 import { G as GraduationCap, a as Sparkles, B as Building2, C as Check } from "../_libs/lucide-react.mjs";
 import { m as motion } from "../_libs/framer-motion.mjs";
 import "../_libs/tanstack__router-core.mjs";

@@ -1,8 +1,8 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-BjRbeK34.mjs";
+import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-CBjVi-4k.mjs";
 import { a as useScroll, b as useTransform, m as motion } from "../_libs/framer-motion.mjs";
-import { A as ArrowRight, c as ChevronRight, e as Brain, P as PenTool, f as Telescope, N as NotebookPen, g as ListChecks, h as Network, R as Rocket, i as FolderLock, a as Sparkles, j as SendHorizontal } from "../_libs/lucide-react.mjs";
+import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, i as Brain, P as PenTool, j as Telescope, N as NotebookPen, k as ListChecks, l as Network, R as Rocket, a as Sparkles, m as FolderLock, n as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
 import "../_libs/cookie-es.mjs";
@@ -21,10 +21,21 @@ import "../_libs/tanstack__react-query.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
 const SUGGESTIONS = [
-  { label: "Photosynthesis", prompt: "Break down the light-dependent reactions of photosynthesis." },
-  { label: "Tensor Calc", prompt: "Derive the Christoffel symbols for a 2-sphere metric, step by step." },
-  { label: "Truss Solver", prompt: "Solve this hand-drawn truss for axial forces — joint method." },
-  { label: "Org Chem Mechanisms", prompt: "Walk through the SN2 mechanism for 2-bromobutane + NaOH." }
+  { emoji: "🌿", label: "Teach me Photosynthesis", prompt: "Explain the light-dependent reactions of photosynthesis in detail." },
+  { emoji: "⚡", label: "Create a quiz on Physics", prompt: "Generate a quiz on Newton's Laws of Motion with varying difficulty levels." },
+  { emoji: "📝", label: "Generate study notes", prompt: "Create comprehensive study notes on cellular biology fundamentals." },
+  { emoji: "🔬", label: "Explain Newton's Laws", prompt: "Walk through Newton's Three Laws of Motion with real-world examples." }
+];
+const METRICS = [
+  { icon: Target, value: "0", label: "Questions Solved" },
+  { icon: FileText, value: "0", label: "Notes Generated" },
+  { icon: BookOpen, value: "0", label: "Quizzes Completed" },
+  { icon: FolderKanban, value: "0", label: "Research Projects" }
+];
+const SYSTEM_STATUS = [
+  { label: "Model", value: "Llama 3.3" },
+  { label: "Latency", value: "42ms" },
+  { label: "Tokens/s", value: "85 t/s" }
 ];
 function PromptAnchor() {
   const [active, setActive] = reactExports.useState(0);
@@ -106,10 +117,10 @@ function PromptAnchor() {
           "button",
           {
             onClick: () => setActive(i),
-            className: `inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-wider transition-all ${active === i ? "border-orange/60 bg-orange/15 text-orange shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]" : "border-border bg-background/40 text-muted-foreground hover:text-foreground hover:border-orange/40"}`,
+            className: `inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] transition-all ${active === i ? "border-orange/60 bg-orange/15 text-orange shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]" : "border-border bg-background/40 text-muted-foreground hover:text-foreground hover:border-orange/40"}`,
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "h-1 w-1 rounded-full bg-current" }),
-              s.label
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: s.emoji }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-medium", children: s.label })
             ]
           },
           s.label
@@ -199,6 +210,49 @@ function Hero() {
         }
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx(PromptAnchor, {}),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        motion.div,
+        {
+          initial: { opacity: 0, y: 16 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay: 0.4 },
+          className: "mt-8 grid grid-cols-2 md:grid-cols-4 gap-3",
+          children: METRICS.map((m, i) => {
+            const Icon = m.icon;
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                className: "rounded-xl border border-border bg-card/40 px-4 py-3 backdrop-blur",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mb-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4 text-orange/70" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-mono text-[10px] uppercase tracking-wider text-muted-foreground", children: m.label })
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display text-2xl font-bold text-foreground", children: m.value })
+                ]
+              },
+              m.label
+            );
+          })
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        motion.div,
+        {
+          initial: { opacity: 0 },
+          animate: { opacity: 1 },
+          transition: { duration: 0.6, delay: 0.5 },
+          className: "mt-4 inline-flex items-center gap-4 rounded-full border border-border/50 bg-background/30 px-4 py-2 font-mono text-[10px] text-muted-foreground/70",
+          children: SYSTEM_STATUS.map((s, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1.5", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-foreground/50", children: [
+              s.label,
+              ":"
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-cyan", children: s.value }),
+            i < SYSTEM_STATUS.length - 1 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-border mx-1", children: "|" })
+          ] }, s.label))
+        }
+      ),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         motion.div,
         {
@@ -249,10 +303,9 @@ const WORKSPACES = [
     title: "Core Intelligence Console",
     redirectTarget: "core-intelligence-console",
     motion: "Stream-pill ignition · 60fps token cascade",
-    body: "The definitive cognitive command center for advanced academic research. Features an integrated multi-model routing orchestration environment capable of processing parallel live queries. Built-in interactive suggestion nodes let users instantly run complex concepts with a single click. Includes automated code structure generation, type-guarded output validations, and clear LaTeX equations for clean rendering of physics and mathematical formulas.",
+    body: "Collaborate with your adaptive STEM mentor inside an optimized, multi-model execution surface engineered for deep academic inquiry.",
     tone: "orange",
-    interactionEngine: "A running multi-tier query stream detailing token construction outputs alongside real-time accuracy scoring benchmarks.",
-    features: ["Multi-model routing", "60fps token cascade", "LaTeX rendering", "Type validation"]
+    features: ["Multi-model routing", "60fps token cascade", "Adaptive reasoning", "Deep inquiry"]
   },
   {
     icon: PenTool,
@@ -260,10 +313,9 @@ const WORKSPACES = [
     title: "Scribble Analysis Lab",
     redirectTarget: "scribble-analysis-lab",
     motion: "Vector-diff overlay · surgical cubic-bezier path reveal",
-    body: "An advanced structural visual reasoning module built atop a 60Hz vector-diff processing framework. Ingests raw hand-drawn user inputs, normalizing complex sketches into crisp SVG vector data arrays. Features an integrated symbolic algebra matrix and engineering physics solver that automatically evaluates node points, beam vectors, and load values. Flags mechanical logic flaws, structural deflection anomalies, and calculus notation errors with precise inline highlights linked directly to foundational physics principles.",
+    body: "Real-time vector geometric processing and mistake correction engine that analyzes handwritten equations, sketches, and engineering diagrams.",
     tone: "gold",
-    interactionEngine: "A production-ready canvas schematic tracking a 5-node mechanics truss with live delta correction lines.",
-    features: ["60Hz vector processing", "SVG normalization", "Physics solver", "Error highlighting"]
+    features: ["60Hz vector processing", "Sketch analysis", "Error detection", "Diagram parsing"]
   },
   {
     icon: Telescope,
@@ -271,32 +323,29 @@ const WORKSPACES = [
     title: "Quantum Research Engine",
     redirectTarget: "quantum-research-engine",
     motion: "Telemetry-glyph scroll · deep-field parallax",
-    body: "Engineered exclusively for extreme scientific computing and high-precision academic deep-dives. Utilizes symbolic algebra integration running at a native precision threshold of 1e-14. Capable of handling massive mathematical calculations, multi-variable calculus loops, and complex organic chemistry reaction tracking without context execution dropouts.",
+    body: "Dedicated to intense, multi-variable scientific computations and advanced symbolic algebraic derivations running at 1e-14 precision.",
     tone: "cyan",
-    interactionEngine: "A rolling background terminal showing live calculation steps and data log validation traces.",
-    features: ["1e-14 precision", "Symbolic algebra", "Multi-var calculus", "Reaction tracking"]
+    features: ["1e-14 precision", "Symbolic algebra", "Multi-var calculus", "Scientific computing"]
   },
   {
     icon: NotebookPen,
     code: "W-04",
-    title: "Notes Generator",
+    title: "Scientific Documentation Lab",
     redirectTarget: "notes-generator",
     motion: "Sheet-fold cascade · modular accordion bloom",
-    body: "An automated markdown processing layout that compiles clean, structured study blueprints, comprehensive revision notes, and exam-ready briefs. Designed to mirror how researchers naturally catalog knowledge systems—completely eliminating surface-level summaries in favor of layered informational architectures.",
+    body: "Automated knowledge compilation surface that builds structured summaries, technical notes, and exam-ready outlines.",
     tone: "orange",
-    interactionEngine: "Interactive, nested structural accordions showing layered breakdowns from foundational concepts to advanced technical implementations.",
-    features: ["Markdown processing", "Layered structure", "Exam-ready briefs", "Knowledge mapping"]
+    features: ["Auto-compilation", "Structured summaries", "Exam briefs", "Technical notes"]
   },
   {
     icon: ListChecks,
     code: "W-05",
-    title: "Quiz Generator",
+    title: "Mastery Assessment Engine",
     redirectTarget: "quiz-generator",
     motion: "Difficulty-tier ladder · Elo-curve sweep",
-    body: "Generates custom academic testing fields mapped directly to rigid difficulty paths. Employs a dynamic calibration engine that adapts question difficulty to student skill levels, calculating knowledge retention metrics via precise performance profiles.",
+    body: "Fires custom academic testing arrays mapped to strict skill-calibrated difficulty tracks with target dynamic tracking metrics.",
     tone: "gold",
-    interactionEngine: "An interactive difficulty selector showing skill levels adjusting across an animated tracking curve.",
-    features: ["Difficulty calibration", "Elo tracking", "Skill profiling", "Adaptive testing"]
+    features: ["Skill calibration", "Elo tracking", "Adaptive testing", "Performance metrics"]
   },
   {
     icon: Network,
@@ -304,10 +353,9 @@ const WORKSPACES = [
     title: "Concept Dependency Map",
     redirectTarget: "concept-dependency-map",
     motion: "Force-graph crystallization · edge-glow trace",
-    body: "An interactive visual node relationship framework mapping out required prerequisite pathways for STEM subjects. Traces dependencies across topics so students can visualize exactly what knowledge blocks must be mastered before tackling advanced scientific modules.",
+    body: "Interactive visual network relationship graph mapping prerequisite learning paths and core knowledge structures for STEM subjects.",
     tone: "cyan",
-    interactionEngine: "A dynamic visual canvas graph with floating nodes, connecting lines, and glowing edge trails showing learning progression.",
-    features: ["Prerequisite mapping", "Node visualization", "Dependency tracking", "Learning paths"]
+    features: ["Prerequisite mapping", "Visual graphs", "Knowledge structures", "Learning paths"]
   },
   {
     icon: Rocket,
@@ -315,21 +363,29 @@ const WORKSPACES = [
     title: "Academic Propulsion",
     redirectTarget: "academic-propulsion",
     motion: "Skill-vector launch · radial velocity rings",
-    body: "Tracks personalized study roadmaps and dynamic performance vectors in real time. Renders growth data through a premium flight telemetry interface, adjusting learning paths based on master tracking statistics.",
+    body: "Tracks personalized study roadmaps and dynamic skill velocity vectors mapped across a flight-HUD telemetry overlay.",
     tone: "orange",
-    interactionEngine: "Radial progress rings and vector charts tracking comprehension velocities across core modules.",
     features: ["Progress tracking", "Telemetry HUD", "Velocity vectors", "Adaptive paths"]
   },
   {
-    icon: FolderLock,
+    icon: Sparkles,
     code: "W-08",
+    title: "Cognitive Synergy Hub",
+    redirectTarget: "cognitive-synergy",
+    motion: "Node crystallization · cross-agent synthesis",
+    body: "A centralized real-time workspace where multi-tier agent nodes collaborate to synthesize cross-disciplinary solutions.",
+    tone: "gold",
+    features: ["Multi-agent collab", "Real-time synthesis", "Cross-disciplinary", "Node orchestration"]
+  },
+  {
+    icon: FolderLock,
+    code: "W-09",
     title: "Research Portfolio",
     redirectTarget: "research-portfolio",
     motion: "Vault unlock · AES-glyph shimmer",
-    body: "A highly secure, zero-mock-data storage vault that groups and catalogs all user artifacts—including generated formulas, quiz histories, notes, and scribble diagnostics—into an organized local library.",
-    tone: "gold",
-    interactionEngine: "A secure structural library interface with clear document filters and data export controls.",
-    features: ["AES-256 encryption", "Zero-mock data", "Artifact cataloging", "Export controls"]
+    body: "Secure local asset library consolidating all generated documents, quiz histories, lab outputs, and historical artifacts.",
+    tone: "cyan",
+    features: ["AES-256 encryption", "Artifact consolidation", "Local library", "Export controls"]
   }
 ];
 function Workspaces() {
@@ -339,7 +395,7 @@ function Workspaces() {
       {
         kicker: "02 · CORE WORKSPACE ARTIFACTS",
         title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-          "Eight workspaces.",
+          "Nine modules.",
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
           "One ",
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "cognitive instrument" }),
@@ -348,7 +404,7 @@ function Workspaces() {
         sub: "Each module is a purpose-built surface — not a chat wrapper. Tuned vocabulary, tuned reasoning chain, tuned visual grammar."
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4", children: WORKSPACES.map((w, i) => {
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: WORKSPACES.map((w, i) => {
       const Icon = w.icon;
       return /* @__PURE__ */ jsxRuntimeExports.jsx(
         motion.div,
@@ -356,7 +412,7 @@ function Workspaces() {
           initial: { opacity: 0, y: 16 },
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, margin: "-60px" },
-          transition: { duration: 0.5, delay: i % 4 * 0.06 },
+          transition: { duration: 0.5, delay: i % 3 * 0.06 },
           children: /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { className: "h-full cursor-pointer", onClick: () => {
             localStorage.setItem("auth_redirect_target", w.redirectTarget);
             window.location.href = "https://sci-forge-aii.vercel.app/";
