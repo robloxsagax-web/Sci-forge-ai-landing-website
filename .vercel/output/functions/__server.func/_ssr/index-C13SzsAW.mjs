@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-D5KVh5vY.mjs";
+import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-EdgwWCLL.mjs";
 import { a as useMotionValue, b as useSpring, m as motion, c as useScroll, d as useTransform } from "../_libs/framer-motion.mjs";
 import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, i as Brain, P as PenTool, j as Telescope, N as NotebookPen, k as ListChecks, l as Network, R as Rocket, a as Sparkles, m as FolderLock, n as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
@@ -189,7 +189,7 @@ function Hero() {
             initial: { opacity: 0, y: 18 },
             animate: { opacity: 1, y: 0 },
             transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-            className: "block text-white drop-shadow-sm",
+            className: "block text-zinc-950 dark:text-white drop-shadow-sm",
             children: "Step into deep"
           }
         ),

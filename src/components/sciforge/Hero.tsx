@@ -193,7 +193,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="block text-white drop-shadow-sm"
+            className="block text-zinc-950 dark:text-white drop-shadow-sm"
           >
             Step into deep
           </motion.span>
