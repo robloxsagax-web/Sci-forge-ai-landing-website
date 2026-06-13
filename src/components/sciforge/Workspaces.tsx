@@ -136,7 +136,7 @@ export function Workspaces() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
               >
-                <TraceCard className="h-full cursor-pointer" onClick={() => {
+                <TraceCard data-cursor-card className="h-full cursor-pointer" onClick={() => {
                   localStorage.setItem('auth_redirect_target', w.redirectTarget);
                   window.location.href = "https://sci-forge-aii.vercel.app/";
                 }}>

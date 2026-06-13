@@ -1,7 +1,7 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-CBjVi-4k.mjs";
-import { a as useScroll, b as useTransform, m as motion } from "../_libs/framer-motion.mjs";
+import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-D5KVh5vY.mjs";
+import { a as useMotionValue, b as useSpring, m as motion, c as useScroll, d as useTransform } from "../_libs/framer-motion.mjs";
 import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, i as Brain, P as PenTool, j as Telescope, N as NotebookPen, k as ListChecks, l as Network, R as Rocket, a as Sparkles, m as FolderLock, n as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
@@ -413,7 +413,7 @@ function Workspaces() {
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, margin: "-60px" },
           transition: { duration: 0.5, delay: i % 3 * 0.06 },
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { className: "h-full cursor-pointer", onClick: () => {
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { "data-cursor-card": true, className: "h-full cursor-pointer", onClick: () => {
             localStorage.setItem("auth_redirect_target", w.redirectTarget);
             window.location.href = "https://sci-forge-aii.vercel.app/";
           }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
@@ -448,8 +448,201 @@ function Workspaces() {
     }) })
   ] }) });
 }
+const CURSOR_CONFIGS = {
+  default: {
+    dotSize: 6,
+    ringSize: 32,
+    ringBorderWidth: 1,
+    hasDashArray: false,
+    isSpinning: false,
+    isCrosshair: false
+  },
+  link: {
+    dotSize: 6,
+    ringSize: 56,
+    ringBorderWidth: 1.5,
+    hasDashArray: true,
+    isSpinning: true,
+    isCrosshair: false
+  },
+  card: {
+    dotSize: 4,
+    ringSize: 12,
+    ringBorderWidth: 2,
+    hasDashArray: false,
+    isSpinning: false,
+    isCrosshair: true
+  }
+};
+function CustomCursor() {
+  const cursorRef = reactExports.useRef(null);
+  const [cursorState, setCursorState] = reactExports.useState("default");
+  const [isVisible, setIsVisible] = reactExports.useState(false);
+  const [isTouchDevice, setIsTouchDevice] = reactExports.useState(false);
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const springConfig = { stiffness: 280, damping: 24, mass: 0.4 };
+  const ringX = useSpring(cursorX, springConfig);
+  const ringY = useSpring(cursorY, springConfig);
+  const config = CURSOR_CONFIGS[cursorState];
+  reactExports.useEffect(() => {
+    const checkTouch = () => {
+      setIsTouchDevice(
+        "ontouchstart" in window || navigator.maxTouchPoints > 0 || window.matchMedia("(pointer: coarse)").matches
+      );
+    };
+    checkTouch();
+  }, []);
+  const handleMouseMove = reactExports.useCallback(
+    (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      cursorX.set(x);
+      cursorY.set(y);
+      if (!isVisible) setIsVisible(true);
+    },
+    [cursorX, cursorY, isVisible]
+  );
+  const handleMouseEnter = reactExports.useCallback(() => {
+    if (!isTouchDevice) setIsVisible(true);
+  }, [isTouchDevice]);
+  const handleMouseLeave = reactExports.useCallback(() => {
+    setIsVisible(false);
+  }, []);
+  const handleElementDetection = reactExports.useCallback((e) => {
+    const target = e.target;
+    const isLink = target.closest('a, button, [role="button"], input, textarea, select') !== null || target.tagName === "A" || target.tagName === "BUTTON";
+    const isCard = target.closest("[data-cursor-card]") !== null || target.closest(".group") !== null;
+    if (isCard) {
+      setCursorState("card");
+    } else if (isLink) {
+      setCursorState("link");
+    } else {
+      setCursorState("default");
+    }
+  }, []);
+  reactExports.useEffect(() => {
+    if (isTouchDevice) return;
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseover", handleElementDetection);
+    document.addEventListener("mouseenter", handleMouseEnter);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.body.style.cursor = "none";
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseover", handleElementDetection);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.body.style.cursor = "auto";
+    };
+  }, [isTouchDevice, handleMouseMove, handleElementDetection, handleMouseEnter, handleMouseLeave]);
+  if (isTouchDevice) return null;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      ref: cursorRef,
+      className: "fixed inset-0 pointer-events-none z-[9999]",
+      style: { opacity: isVisible ? 1 : 0 },
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          motion.div,
+          {
+            className: "absolute rounded-full",
+            style: {
+              width: config.dotSize,
+              height: config.dotSize,
+              backgroundColor: "#FF7A00",
+              x: cursorX,
+              y: cursorY,
+              translateX: "-50%",
+              translateY: "-50%",
+              willChange: "transform"
+            },
+            animate: {
+              scale: config.isCrosshair ? 0.5 : 1
+            },
+            transition: { duration: 0.15 }
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          motion.div,
+          {
+            className: "absolute rounded-full",
+            style: {
+              width: config.ringSize,
+              height: config.ringSize,
+              x: ringX,
+              y: ringY,
+              translateX: "-50%",
+              translateY: "-50%",
+              willChange: "transform",
+              border: `${config.ringBorderWidth}px ${config.hasDashArray ? "dashed" : "solid"} #FFB547`,
+              boxShadow: `
+            inset 0 0 ${config.ringSize / 3}px rgba(255, 181, 71, 0.03),
+            0 0 ${config.ringSize / 4}px rgba(255, 122, 0, 0.08)
+          `
+            },
+            animate: {
+              width: config.ringSize,
+              height: config.ringSize,
+              rotate: config.isSpinning ? 360 : 0
+            },
+            transition: {
+              width: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
+              height: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
+              rotate: {
+                duration: config.isSpinning ? 4 : 0,
+                repeat: config.isSpinning ? Infinity : 0,
+                ease: "linear"
+              }
+            }
+          }
+        ),
+        config.isCrosshair && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          motion.div,
+          {
+            className: "absolute",
+            style: {
+              width: config.ringSize,
+              height: config.ringSize,
+              x: ringX,
+              y: ringY,
+              translateX: "-50%",
+              translateY: "-50%",
+              willChange: "transform"
+            },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "div",
+                {
+                  className: "absolute top-1/2 left-0 right-0 h-px bg-[#FF7A00]",
+                  style: {
+                    transform: "translateY(-50%)",
+                    opacity: 0.8
+                  }
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "div",
+                {
+                  className: "absolute left-1/2 top-0 bottom-0 w-px bg-[#FF7A00]",
+                  style: {
+                    transform: "translateX(-50%)",
+                    opacity: 0.8
+                  }
+                }
+              )
+            ]
+          }
+        )
+      ]
+    }
+  );
+}
 function LandingPage() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(CustomCursor, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(TelemetryBanner, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Workspaces, {})

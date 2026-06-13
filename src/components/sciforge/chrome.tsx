@@ -294,10 +294,11 @@ export function SiteFooter() {
   );
 }
 
-export function SiteShell({ children }: { children: React.ReactNode }) {
+export function SiteShell({ children, showCursor = false }: { children: React.ReactNode; showCursor?: boolean }) {
   const chrome = useChrome();
   return (
     <div id="top" className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      {showCursor && <CustomCursor />}
       <Nav {...chrome} />
       {children}
       <SiteFooter />

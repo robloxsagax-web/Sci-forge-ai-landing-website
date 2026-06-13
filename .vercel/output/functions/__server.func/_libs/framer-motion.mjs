@@ -1,5 +1,5 @@
 import { r as reactExports, j as jsxRuntimeExports } from "./react.mjs";
-import { g as getFeatureDefinitions, s as setFeatureDefinitions, i as isMotionValue, a as isControllingVariants, b as isVariantLabel, c as isForcedMotionValue, d as buildHTMLStyles, e as buildSVGAttrs, f as isSVGTag, r as resolveMotionValue, h as isVariantNode, j as isAnimationControls, k as resolveVariantFromProps, l as scrapeMotionValuesFromProps, m as scrapeMotionValuesFromProps$1, o as optimizedAppearDataAttribute, S as SVGVisualElement, H as HTMLVisualElement, F as Feature, n as createAnimationState, p as resolveVariant, q as isPrimaryPointer, t as addDomEvent, u as frameData, v as frame, w as cancelFrame, x as mixNumber, y as calcLength, z as createBox, A as eachAxis, B as measurePageBox, C as convertBoxToBoundingBox, D as convertBoundingBoxToBox, E as addValueToWillChange, G as animateMotionValue, I as setDragLock, J as resize, K as percent, L as isElementTextInput, M as microtask, N as globalProjectionState, O as HTMLProjectionNode, P as hover, Q as press, R as supportsViewTimeline, T as supportsScrollTimeline, U as isHTMLElement, V as interpolate, W as defaultOffset$1, X as observeTimeline, Y as cancelMicrotask, Z as motionValue, _ as collectMotionValues, $ as transform, a0 as resolveElements } from "./motion-dom.mjs";
+import { g as getFeatureDefinitions, s as setFeatureDefinitions, i as isMotionValue, a as isControllingVariants, b as isVariantLabel, c as isForcedMotionValue, d as buildHTMLStyles, e as buildSVGAttrs, f as isSVGTag, r as resolveMotionValue, h as isVariantNode, j as isAnimationControls, k as resolveVariantFromProps, l as scrapeMotionValuesFromProps, m as scrapeMotionValuesFromProps$1, o as optimizedAppearDataAttribute, S as SVGVisualElement, H as HTMLVisualElement, F as Feature, n as createAnimationState, p as resolveVariant, q as isPrimaryPointer, t as addDomEvent, u as frameData, v as frame, w as cancelFrame, x as mixNumber, y as calcLength, z as createBox, A as eachAxis, B as measurePageBox, C as convertBoxToBoundingBox, D as convertBoundingBoxToBox, E as addValueToWillChange, G as animateMotionValue, I as setDragLock, J as resize, K as percent, L as isElementTextInput, M as microtask, N as globalProjectionState, O as HTMLProjectionNode, P as hover, Q as press, R as supportsViewTimeline, T as supportsScrollTimeline, U as isHTMLElement, V as interpolate, W as defaultOffset$1, X as observeTimeline, Y as cancelMicrotask, Z as motionValue, _ as collectMotionValues, $ as transform, a0 as attachFollow, a1 as resolveElements } from "./motion-dom.mjs";
 import { p as pipe, s as secondsToMilliseconds, m as millisecondsToSeconds, a as progress, c as clamp, n as noop, v as velocityPerSecond } from "./motion-utils.mjs";
 const LayoutGroupContext = reactExports.createContext({});
 function useConstant(init) {
@@ -2352,6 +2352,21 @@ function useMapTransform(inputValue, inputRange, outputMap, options) {
   }
   return output;
 }
+function useFollowValue(source, options = {}) {
+  const { isStatic } = reactExports.useContext(MotionConfigContext);
+  const getFromSource = () => isMotionValue(source) ? source.get() : source;
+  if (isStatic) {
+    return useTransform(getFromSource);
+  }
+  const value = useMotionValue(getFromSource());
+  reactExports.useInsertionEffect(() => {
+    return attachFollow(value, source, options);
+  }, [value, JSON.stringify(options)]);
+  return value;
+}
+function useSpring(source, options = {}) {
+  return useFollowValue(source, { type: "spring", ...options });
+}
 const thresholds = {
   some: 0,
   all: 1
@@ -2404,8 +2419,10 @@ function useInView(ref, { root, margin, amount, once = false, initial = false } 
   return isInView;
 }
 export {
-  useScroll as a,
-  useTransform as b,
+  useMotionValue as a,
+  useSpring as b,
+  useScroll as c,
+  useTransform as d,
   motion as m,
   useInView as u
 };

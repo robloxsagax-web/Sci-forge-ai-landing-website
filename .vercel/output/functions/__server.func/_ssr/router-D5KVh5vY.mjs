@@ -19,7 +19,7 @@ import "stream";
 import "../_libs/isbot.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
-const appCss = "/assets/styles-B9PmUTO2.css";
+const appCss = "/assets/styles-V6Ta9MK0.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -278,9 +278,10 @@ function SiteFooter() {
     ] })
   ] }) });
 }
-function SiteShell({ children }) {
+function SiteShell({ children, showCursor = false }) {
   const chrome = useChrome();
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { id: "top", className: "relative min-h-screen bg-background text-foreground overflow-x-hidden", children: [
+    showCursor && /* @__PURE__ */ jsxRuntimeExports.jsx(CustomCursor, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Nav, { ...chrome }),
     children,
     /* @__PURE__ */ jsxRuntimeExports.jsx(SiteFooter, {})
@@ -382,7 +383,7 @@ function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SiteShell, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) }) });
 }
-const $$splitComponentImporter$3 = () => import("./propulsion-RYyxDfGb.mjs");
+const $$splitComponentImporter$3 = () => import("./propulsion-CHN-zQ8R.mjs");
 const Route$3 = createFileRoute("/propulsion")({
   head: () => ({
     meta: [{
@@ -400,7 +401,7 @@ const Route$3 = createFileRoute("/propulsion")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-const $$splitComponentImporter$2 = () => import("./pricing-Dkw7oISy.mjs");
+const $$splitComponentImporter$2 = () => import("./pricing-NmvcfOdH.mjs");
 const Route$2 = createFileRoute("/pricing")({
   head: () => ({
     meta: [{
@@ -418,7 +419,7 @@ const Route$2 = createFileRoute("/pricing")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./architecture-B5npoyeR.mjs");
+const $$splitComponentImporter$1 = () => import("./architecture-UlFgNzoz.mjs");
 const Route$1 = createFileRoute("/architecture")({
   head: () => ({
     meta: [{
@@ -436,7 +437,7 @@ const Route$1 = createFileRoute("/architecture")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-DyzvIBxs.mjs");
+const $$splitComponentImporter = () => import("./index-B1disR37.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
