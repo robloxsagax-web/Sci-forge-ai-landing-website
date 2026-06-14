@@ -36,6 +36,19 @@ Dependency Mapping (W-06): Topological prerequisite learning matrices.
 Persistent Ledger (W-09): Secure, automatic research cataloging.
 
 <div align="center">
+<h3>🛠️ THE TECHNOLOGY STACK</h3>
+<div align="center">
+* **Frontend Framework:** Next.js 14 / React
+
+* **Animation Engine:** Framer Motion (Fluid Choreography)
+
+* **Styling:** Tailwind CSS
+
+* **Accessibility:** OpenDyslexic & High-Contrast Adaptive Layers
+
+* **Deployment:** Vercel Serverless Architecture 
+
+<div align="center">
 <h3>🚀 SUBMISSION & DEPLOYMENT</h3>
 <div align="center">
 <h3>This landing portal is optimized for high-speed accessibility, acting as the primary bridge to our production environment.</h3>
