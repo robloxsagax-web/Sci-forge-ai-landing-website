@@ -38,26 +38,28 @@ Persistent Ledger (W-09): Secure, automatic research cataloging.
 <div align="center">
 <h3>🛠️ THE TECHNOLOGY STACK</h3>
 <div align="center">
-* **Frontend Framework:** Next.js 14 / React
+<div align="center">
+<h3> Frontend Framework: Next.js 14 / React</h3>
+<div align="center">
 
-* **Animation Engine:** Framer Motion (Fluid Choreography)
+ **Animation Engine:** Framer Motion (Fluid Choreography)
 
-* **Styling:** Tailwind CSS
+ **Styling:** Tailwind CSS
 
-* **Accessibility:** OpenDyslexic & High-Contrast Adaptive Layers
+ **Accessibility:** OpenDyslexic & High-Contrast Adaptive Layers
 
-* **Deployment:** Vercel Serverless Architecture 
+ **Deployment:** Vercel Serverless Architecture 
 
 <div align="center">
 <h3>🚀 SUBMISSION & DEPLOYMENT</h3>
 <div align="center">
 <h3>This landing portal is optimized for high-speed accessibility, acting as the primary bridge to our production environment.</h3>
 
-* **Production Workspace (The App):** [https://sci-forge-aii.vercel.app/](https://sci-forge-aii.vercel.app/)
+ **Production Workspace (The App):** [https://sci-forge-aii.vercel.app/](https://sci-forge-aii.vercel.app/)
 
-* **Core Source Code (The App):** [https://github.com/robloxsagax-web/SCI-FORGE-AI](https://github.com/robloxsagax-web/SCI-FORGE-AI)
+ **Core Source Code (The App):** [https://github.com/robloxsagax-web/SCI-FORGE-AI](https://github.com/robloxsagax-web/SCI-FORGE-AI)
 
-* **Project Walkthrough:** [Official Demo Video (YouTube)](https://youtu.be/ebK7_UeN6PA)
+ **Project Walkthrough:** [Official Demo Video (YouTube)](https://youtu.be/ebK7_UeN6PA)
 
 <div align="center">
 <h3>⚙️ DEVELOPMENT</h3>
