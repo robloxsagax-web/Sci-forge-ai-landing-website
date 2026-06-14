@@ -40,11 +40,11 @@ Persistent Ledger (W-09): Secure, automatic research cataloging.
 <div align="center">
 <h3>This landing portal is optimized for high-speed accessibility, acting as the primary bridge to our production environment.</h3>
 
-Production Workspace: SciForge AI Live App is https://github.com/robloxsagax-web/Sci-forge-ai-landing-website
+* **Production Workspace (The App):** [https://sci-forge-aii.vercel.app/](https://sci-forge-aii.vercel.app/)
 
-Core Source Code: SciForge AI Web-App Repository is https://sci-forge-ai.vercel.app/
+* **Core Source Code (The App):** [https://github.com/robloxsagax-web/SCI-FORGE-AI](https://github.com/robloxsagax-web/SCI-FORGE-AI)
 
-Project Walkthrough: Official Demo Video (YouTube) is https://youtu.be/ebK7_UeN6PA
+* **Project Walkthrough:** [Official Demo Video (YouTube)](https://youtu.be/ebK7_UeN6PA)
 
 <div align="center">
 <h3>⚙️ DEVELOPMENT</h3>
