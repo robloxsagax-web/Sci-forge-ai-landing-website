@@ -21,19 +21,21 @@
 While the main application handles the heavy logical lifting, our landing page is engineered for clarity, speed, and intuitive user onboarding—ensuring every student, researcher, and engineer understands the power of cognitive acceleration the moment they land on the platform.
 
 <div align="center">
-<h3>🛠️ THE WORKBENCH OVERVIEW</h3>
+<h3>🛠️ THE LANDING PORTAL PURPOSE</h3>
 <div align="center">
-<h3>SciForge AI is a decoupled operating system for learning. Our architecture features:</h3>
+<h3>This repository contains the high-conversion entry portal and marketing interface for SciForge AI. It is designed to introduce students and educators to the SciForge AI ecosystem, showcasing the platform's key features:</h3>
 
-Core Intelligence (W-01): High-velocity multi-model query routing.
+**Core Intelligence Console:** AI-powered STEM chat and content generation.
 
-Scribble Analysis (W-02): Real-time forensic logic verification.
+**Scribble Analysis Lab:** Upload interface for diagram review (roadmap: computer vision integration).
 
-Quantum Research (W-03): Advanced symbolic calculus and automated synthesis.
+**Quantum Research Engine:** LLM-generated research insights and thesis synthesis.
 
-Dependency Mapping (W-06): Topological prerequisite learning matrices.
+**Academic Propulsion Center:** AI-generated multi-day study plans and quizzes.
 
-Persistent Ledger (W-09): Secure, automatic research cataloging.
+**Research Portfolio:** Auto-saving local storage ledger tracking all learning assets.
+
+The actual logic and processing occur in the main application repository. This landing page serves as the gateway to that ecosystem.
 
 <div align="center">
 <h3>🛠️ THE TECHNOLOGY STACK</h3>
