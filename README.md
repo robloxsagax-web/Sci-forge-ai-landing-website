@@ -78,6 +78,6 @@ Launch the portal:
 npm run dev
 
 <div align="center">
-<p><em>Built for DSH Hacks V1 — Innovating STEM through AI.</em></p>
+<p><em>Built for Innovation — Innovating STEM through AI.</em></p>
 <p>SCI FORGE AI © 2026</p>
 </div>
