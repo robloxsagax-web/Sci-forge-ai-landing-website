@@ -4,15 +4,15 @@ import { PricingPage } from "@/components/sciforge/Pricing";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "Pricing — SciForge AI" },
+      { title: "Pricing: SciForge AI" },
       {
         name: "description",
-        content: "Free Student Core, Rs. 2,500/mo Quantum Engine for researchers, and custom Institutional Grid licensing.",
+        content: "SciForge AI pricing starts with a $0 free account, a $10 monthly research plan, and custom institutional quotes.",
       },
-      { property: "og:title", content: "Pricing — SciForge AI" },
+      { property: "og:title", content: "Pricing: SciForge AI" },
       {
         property: "og:description",
-        content: "Three activation tiers calibrated for the student, the researcher, and the institution.",
+        content: "Clear terms for the free account, the $10 monthly plan, and custom institutional licensing.",
       },
     ],
   }),

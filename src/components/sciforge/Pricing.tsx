@@ -9,33 +9,37 @@ const PLANS = [
     name: "Core Portal",
     tag: "Student Tier",
     price: "$0",
-    period: "/ Free Account",
+    period: "/ free account",
     cta: "Open free account",
     href: "/",
     featured: false,
     signupRedirect: true,
+    description: "Start with core study help before choosing a paid plan.",
+    terms: ["Free account", "No trial deadline", "Upgrade only when you need research tools"],
     items: [
-      "Core Intelligence Console",
-      "Basic Notes Generator access",
-      "Standard Concept Maps",
-      "Open adaptive chat interface",
+      "AI explanations for STEM concepts",
+      "Basic notes generator",
+      "Standard concept maps",
+      "Adaptive chat workspace",
     ],
   },
   {
     Icon: Sparkles,
     name: "Quantum Engine",
-    tag: "Premium Researcher · Recommended",
+    tag: "Premium Researcher",
     price: "$10",
-    period: "/ Month",
-    cta: "Initialize Quantum Engine",
+    period: "/ month",
+    cta: "Upgrade to Quantum Engine",
     href: "/",
     featured: true,
     signupRedirect: true,
+    description: "For students and researchers who need deeper STEM problem solving.",
+    terms: ["Monthly billing", "Cancel before the next renewal", "Includes advanced research tools"],
     items: [
-      "Unrestricted Scribble Analysis Lab",
-      "High-precision Quantum Research Engine",
-      "Deep-tier Quiz Generators",
-      "Custom Research Portfolios",
+      "Scribble Analysis Lab",
+      "High-precision research engine",
+      "Advanced quiz generator",
+      "Research portfolio workspace",
     ],
   },
   {
@@ -43,16 +47,18 @@ const PLANS = [
     name: "Institutional Grid",
     tag: "University / Lab Network",
     price: "Custom",
-    period: "Pricing",
+    period: "quote",
     cta: "Request licensing quote",
     href: "/",
     featured: false,
     signupRedirect: false,
+    description: "For classrooms, labs, and departments that need shared access.",
+    terms: ["Custom quote", "Multi-seat licensing", "Pilot scope set before billing"],
     items: [
-      "Multi-seat deployment pipelines",
-      "Admin diagnostic overview suites",
-      "Dedicated server allocations",
-      "SLA + private model routing",
+      "Multi-seat setup",
+      "Admin overview tools",
+      "Dedicated capacity options",
+      "SLA and private model routing",
     ],
   },
 ] as const;
@@ -64,16 +70,34 @@ export function PricingPage() {
         <div className="absolute inset-0 blueprint-grid [mask-image:radial-gradient(ellipse_at_top,black_25%,transparent_75%)]" />
         <div className="relative mx-auto max-w-5xl px-6 text-center">
           <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
-            05 · MEMBERSHIP INFRASTRUCTURE
+            05 · PRICING
           </div>
           <h1 className="mt-5 font-display text-5xl sm:text-6xl font-extrabold tracking-tight leading-[0.98]">
-            Transparent value.{" "}
-            <span className="brand-gradient-text">Engine-grade scale.</span>
+            Clear pricing for STEM work.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">
-            One workbench, three activation tiers — calibrated for the
-            student, the researcher, and the institution.
+            Start free, upgrade to the $10 monthly research plan, or request a
+            custom quote for a classroom, lab, or department.
           </p>
+          <div className="mx-auto mt-6 grid max-w-3xl gap-2 text-left sm:grid-cols-3">
+            {[
+              ["Free tier", "$0 core account"],
+              ["Paid plan", "$10 per month"],
+              ["Institutional", "Custom quote"],
+            ].map(([label, value]) => (
+              <div
+                key={label}
+                className="rounded-lg border border-border bg-card/40 px-4 py-3 backdrop-blur"
+              >
+                <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  {label}
+                </div>
+                <div className="mt-1 text-sm font-semibold text-foreground">
+                  {value}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -118,6 +142,9 @@ export function PricingPage() {
                       <div className="mt-1 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                         {p.tag}
                       </div>
+                      <p className="mt-4 text-sm text-muted-foreground">
+                        {p.description}
+                      </p>
                       <div className="mt-6 flex items-baseline gap-2">
                         <span
                           className={`font-display text-4xl font-extrabold ${p.featured ? "brand-gradient-text" : ""}`}
@@ -127,6 +154,19 @@ export function PricingPage() {
                         <span className="font-mono text-xs text-muted-foreground">
                           {p.period}
                         </span>
+                      </div>
+                      <div className="mt-5 rounded-lg border border-border bg-background/35 p-4">
+                        <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                          Terms
+                        </div>
+                        <ul className="mt-3 space-y-2 text-sm">
+                          {p.terms.map((term) => (
+                            <li key={term} className="flex items-start gap-2.5">
+                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange" />
+                              <span className="text-foreground/85">{term}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                       <ul className="mt-6 space-y-2.5 text-sm">
                         {p.items.map((item) => (
@@ -194,7 +234,7 @@ export function PricingPage() {
             {[
               [
                 "Do you train on my data?",
-                "Never. The Research Vault runs in zero-mock mode — AES-256 sealed, no training pipeline ingest.",
+                "No. Zero-mock mode means your files stay sealed with AES-256 encryption and are not used for model training.",
               ],
               [
                 "Which models power Quantum Engine?",
@@ -202,11 +242,11 @@ export function PricingPage() {
               ],
               [
                 "Can I downgrade or cancel?",
-                "Anytime. Your portfolio and notes export cleanly to PDF, Markdown, or LaTeX before billing closes.",
+                "Yes. The paid plan is monthly, and your portfolio and notes export to PDF, Markdown, or LaTeX before billing closes.",
               ],
               [
-                "Institutional pilot timeline?",
-                "Two-week pilot, dedicated allocation. Ping the licensing team and you'll have a sandbox by Friday.",
+                "How do institutional pilots work?",
+                "Request a quote with the number of seats and course or lab scope. Pilot terms are set before billing starts.",
               ],
             ].map(([q, a]) => (
               <TraceCard key={q}>
