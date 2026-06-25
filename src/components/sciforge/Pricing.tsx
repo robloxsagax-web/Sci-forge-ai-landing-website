@@ -206,7 +206,7 @@ export function PricingPage() {
               ],
               [
                 "Institutional pilot timeline?",
-                "Two-week pilot, dedicated allocation. Ping the licensing team and you'll have a sandbox by Friday.",
+                "Institutional pilots are scoped case by case around seats, privacy needs, and deployment timing. Until a contact address is live, use the free workspace to test fit first.",
               ],
             ].map(([q, a]) => (
               <TraceCard key={q}>
