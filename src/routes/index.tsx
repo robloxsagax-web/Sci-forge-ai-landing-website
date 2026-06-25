@@ -5,9 +5,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "SciForge AI — The Cognitive Engine for STEM" },
-      { name: "description", content: "AI STEM mentor with scribble analysis, quantum research, adaptive quizzes, and a dyslexia-friendly accessibility engine." },
+      {
+        name: "description",
+        content:
+          "AI STEM mentor with scribble analysis, research help, adaptive quizzes, exports, and classroom-ready study workflows.",
+      },
       { property: "og:title", content: "SciForge AI — The Cognitive Engine for STEM" },
-      { property: "og:description", content: "ChatGPT + Apple Intelligence + Google Classroom, engineered for STEM mastery." },
+      {
+        property: "og:description",
+        content:
+          "A STEM study workbench for reasoning, scribble analysis, quizzes, notes, and classroom-ready exports.",
+      },
     ],
   }),
   component: Index,
