@@ -95,7 +95,12 @@ const WORKSPACES = [
     motion: "Node crystallization · cross-agent synthesis",
     body: "A centralized real-time workspace where multi-tier agent nodes collaborate to synthesize cross-disciplinary solutions.",
     tone: "gold",
-    features: ["Multi-agent collab", "Real-time synthesis", "Cross-disciplinary", "Node orchestration"],
+    features: [
+      "Multi-agent collab",
+      "Real-time synthesis",
+      "Cross-disciplinary",
+      "Node orchestration",
+    ],
   },
   {
     icon: FolderLock,
@@ -114,7 +119,7 @@ export function Workspaces() {
     <section id="workspaces" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          kicker="02 · CORE WORKSPACE ARTIFACTS"
+          kicker="03 · CORE WORKSPACE ARTIFACTS"
           title={
             <>
               Nine modules.
@@ -136,10 +141,14 @@ export function Workspaces() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
               >
-                <TraceCard data-cursor-card className="h-full cursor-pointer" onClick={() => {
-                  localStorage.setItem('auth_redirect_target', w.redirectTarget);
-                  window.location.href = "https://sci-forge-aii.vercel.app/";
-                }}>
+                <TraceCard
+                  data-cursor-card
+                  className="h-full cursor-pointer"
+                  onClick={() => {
+                    localStorage.setItem("auth_redirect_target", w.redirectTarget);
+                    window.location.href = "https://sci-forge-aii.vercel.app/";
+                  }}
+                >
                   <div className="p-5">
                     <div className="flex items-center justify-between">
                       <div
@@ -158,8 +167,10 @@ export function Workspaces() {
                     <h3 className="mt-4 font-display text-lg font-bold tracking-tight">
                       {w.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">{w.body}</p>
-                    
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                      {w.body}
+                    </p>
+
                     {/* Feature pills */}
                     <div className="mt-3 flex flex-wrap gap-1">
                       {w.features.slice(0, 3).map((feature) => (
@@ -171,7 +182,7 @@ export function Workspaces() {
                         </span>
                       ))}
                     </div>
-                    
+
                     <div className="mt-4 border-t border-border pt-3">
                       <div className="text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70">
                         Motion profile
