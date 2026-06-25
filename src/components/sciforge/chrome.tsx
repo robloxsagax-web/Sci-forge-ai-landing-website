@@ -100,6 +100,7 @@ const NAV_LINKS: [string, string][] = [
   ["Core Intelligence", "/architecture"],
   ["Scribble Lab", "/propulsion"],
   ["Pricing", "/pricing"],
+  ["Compare", "/compare"],
 ];
 
 export function Nav({ theme, setTheme, dyslexic, setDyslexic }: ReturnType<typeof useChrome>) {
@@ -269,6 +270,7 @@ export function SiteFooter() {
             ["System Documentation", "/architecture"],
             ["API Pipeline", "/architecture"],
             ["Institutional Licensing", "/pricing"],
+            ["Compare ChatGPT", "/compare"],
           ].map(([l, href]) => (
             <Link
               key={l}
