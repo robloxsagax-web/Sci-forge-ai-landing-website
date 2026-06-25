@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Check, Sparkles, Building2, GraduationCap } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { SectionHeader, TraceCard } from "./chrome";
+import { captureAnalyticsEvent } from "../../lib/analytics";
 
 const PLANS = [
   {
@@ -144,6 +145,12 @@ export function PricingPage() {
                         {p.signupRedirect ? (
                           <button
                             onClick={() => {
+                              captureAnalyticsEvent("pricing_cta_clicked", {
+                                plan: p.name,
+                                tier: p.tag,
+                                price: p.price,
+                                destination: "workspace_signup",
+                              });
                               localStorage.setItem('auth_default_tab', 'signup');
                               window.location.href = "https://sci-forge-aii.vercel.app/";
                             }}
@@ -158,6 +165,14 @@ export function PricingPage() {
                         ) : (
                           <Link
                             to={p.href}
+                            onClick={() => {
+                              captureAnalyticsEvent("pricing_cta_clicked", {
+                                plan: p.name,
+                                tier: p.tag,
+                                price: p.price,
+                                destination: "licensing_quote",
+                              });
+                            }}
                             className={`inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-semibold transition ${
                               p.featured
                                 ? "brand-gradient text-background shadow-[0_0_28px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"

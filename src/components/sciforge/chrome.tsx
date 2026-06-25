@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Sun, Moon, Type, ArrowRight } from "lucide-react";
+import { captureAnalyticsEvent } from "../../lib/analytics";
 
 /* ===========================================================
  * SciForge AI — Shared site chrome
@@ -151,7 +152,13 @@ export function Nav({ theme, setTheme, dyslexic, setDyslexic }: ReturnType<typeo
             </button>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <button
-                onClick={() => (window.location.href = "https://sci-forge-aii.vercel.app/")}
+                onClick={() => {
+                  captureAnalyticsEvent("workspace_launch_clicked", {
+                    source: "nav_launch_cta",
+                    destination: "workspace_app",
+                  });
+                  window.location.href = "https://sci-forge-aii.vercel.app/";
+                }}
                 className="group relative hidden sm:inline-flex h-9 items-center gap-1.5 overflow-hidden rounded-lg brand-gradient px-3 text-xs font-semibold text-background shadow-[0_0_24px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)] cursor-pointer"
               >
                 <span
