@@ -4,10 +4,10 @@ import { LandingPage } from "@/components/sciforge/Landing";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SciForge AI — The Cognitive Engine for STEM" },
-      { name: "description", content: "AI STEM mentor with scribble analysis, quantum research, adaptive quizzes, and a dyslexia-friendly accessibility engine." },
-      { property: "og:title", content: "SciForge AI — The Cognitive Engine for STEM" },
-      { property: "og:description", content: "ChatGPT + Apple Intelligence + Google Classroom, engineered for STEM mastery." },
+      { title: "SciForge AI: AI workbench for STEM study" },
+      { name: "description", content: "SciForge AI helps students, researchers, and engineers explain STEM concepts, solve problems, generate notes, and build adaptive quizzes." },
+      { property: "og:title", content: "SciForge AI: AI workbench for STEM study" },
+      { property: "og:description", content: "A plain-language AI workspace for STEM study, research, notes, quizzes, and problem solving." },
     ],
   }),
   component: Index,

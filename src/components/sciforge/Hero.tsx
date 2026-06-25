@@ -175,7 +175,7 @@ export function Hero() {
       />
       <div className="mx-auto max-w-5xl px-6 text-center relative">
         <div className="font-mono text-[10px] uppercase tracking-[0.32em] text-muted-foreground/70">
-          01 · COGNITIVE ENTRANCE
+          01 · AI STEM WORKBENCH
         </div>
 
         <motion.div
@@ -185,7 +185,7 @@ export function Hero() {
           className="relative mt-5 inline-flex items-center gap-2 rounded-full border border-orange/40 bg-card/40 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-orange backdrop-blur"
         >
           <span aria-hidden className="absolute inset-0 -z-10 rounded-full bg-orange/15 blur-md" />
-          ⌗ Drop the slow study loop
+          Built for STEM study and research
         </motion.div>
 
         <h1 className="mt-6 font-display text-5xl sm:text-7xl font-extrabold tracking-wide leading-[1.1]">
@@ -195,17 +195,17 @@ export function Hero() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="block text-zinc-950 dark:text-white drop-shadow-sm"
           >
-            Step into deep
+            An AI workbench for
           </motion.span>
           <span className="relative block mt-2">
             <span aria-hidden className="absolute inset-0 -z-10 blur-2xl opacity-50 bg-gradient-to-r from-[#FF7A00] to-[#FFB547]" />
             <span className="block bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,122,0,0.35)] tracking-normal font-extrabold">
-              cognitive
+              STEM study
             </span>
           </span>
           <span className="relative block mt-2">
             <span className="block bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,122,0,0.35)] tracking-normal font-extrabold">
-              acceleration.
+              and problem solving.
             </span>
           </span>
         </h1>
@@ -216,8 +216,9 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.6 }}
           className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground"
         >
-          The intelligent workbench engineered exclusively for scientists,
-          engineers, and the students becoming them.
+          SciForge AI helps students, researchers, and engineers explain
+          concepts, solve math and science problems, generate notes, and build
+          adaptive quizzes in one workspace.
         </motion.p>
 
         <PromptAnchor />
@@ -281,7 +282,7 @@ export function Hero() {
                 aria-hidden
                 className="absolute inset-0 bg-[linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.45)_50%,transparent_70%)] bg-[length:220%_100%] animate-[glyph-shimmer_2.6s_linear_infinite]"
               />
-              <span className="relative">Initialize Workspace</span>
+              <span className="relative">Open workspace</span>
               <ArrowRight className="relative h-4 w-4" />
             </button>
           </motion.div>
@@ -289,7 +290,7 @@ export function Hero() {
             to="/architecture"
             className="group relative inline-flex items-center gap-2 rounded-xl border border-border bg-card/40 px-5 py-3 text-sm font-semibold backdrop-blur transition hover:border-orange/60"
           >
-            Tour the engine
+            See how it works
             <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </motion.div>
