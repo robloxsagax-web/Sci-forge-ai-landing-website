@@ -266,10 +266,10 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[13px]">
           {[
-            ["Core Dashboard", "/"],
-            ["System Documentation", "/architecture"],
-            ["API Pipeline", "/architecture"],
-            ["Institutional Licensing", "/pricing"],
+            ["Workspaces", "/"],
+            ["Core Intelligence", "/architecture"],
+            ["Architecture overview", "/architecture"],
+            ["Pricing", "/pricing"],
           ].map(([l, href]) => (
             <Link
               key={l}
