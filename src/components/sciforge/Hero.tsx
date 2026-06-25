@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight, ChevronRight, Sparkles, SendHorizontal, BookOpen, FileText, Target, FolderKanban } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { captureAnalyticsEvent } from "../../lib/analytics";
 
 const SUGGESTIONS = [
   { emoji: "🌿", label: "Teach me Photosynthesis", prompt: "Explain the light-dependent reactions of photosynthesis in detail." },
@@ -130,6 +131,11 @@ function PromptAnchor() {
 
             <button
               onClick={() => {
+                captureAnalyticsEvent("prompt_run_clicked", {
+                  source: "hero_prompt_anchor",
+                  suggestion_label: SUGGESTIONS[active].label,
+                  destination: "workspace_app",
+                });
                 localStorage.setItem('pending_initial_query', SUGGESTIONS[active].prompt);
                 window.location.href = "https://sci-forge-aii.vercel.app/";
               }}
@@ -274,7 +280,13 @@ export function Hero() {
         >
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
             <button
-              onClick={() => (window.location.href = "https://sci-forge-aii.vercel.app/")}
+              onClick={() => {
+                captureAnalyticsEvent("workspace_launch_clicked", {
+                  source: "hero_primary_cta",
+                  destination: "workspace_app",
+                });
+                window.location.href = "https://sci-forge-aii.vercel.app/";
+              }}
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl brand-gradient px-5 py-3 text-sm font-semibold text-background shadow-[0_0_32px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)] cursor-pointer"
             >
               <span
