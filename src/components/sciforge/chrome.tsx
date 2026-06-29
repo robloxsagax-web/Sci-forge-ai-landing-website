@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Sun, Moon, Type, ArrowRight } from "lucide-react";
+import { SUPPORT_EMAIL, SUPPORT_MAILTO } from "@/lib/contact";
 
 /* ===========================================================
  * SciForge AI — Shared site chrome
@@ -284,6 +285,11 @@ export function SiteFooter() {
             <span className="h-1.5 w-1.5 rounded-full bg-mentor animate-pulse-dot" />
             All systems nominal · v4.1 Aurora
           </div>
+        </div>
+        <div className="mt-5 flex justify-center text-center text-sm text-muted-foreground">
+          <a href={SUPPORT_MAILTO} className="transition-colors hover:text-orange">
+            Support, sales, and institutional questions: {SUPPORT_EMAIL}
+          </a>
         </div>
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground">
           <div>© 2026 SCIFORGEAI</div>
