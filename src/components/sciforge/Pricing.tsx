@@ -6,8 +6,8 @@ import { INSTITUTIONAL_MAILTO, SUPPORT_EMAIL } from "@/lib/contact";
 const PLANS = [
   {
     Icon: GraduationCap,
-    name: "Core Portal",
-    tag: "Student Tier",
+    name: "Free Student",
+    tag: "Core study tools",
     price: "$0",
     period: "/ Free Account",
     cta: "Open free account",
@@ -23,8 +23,8 @@ const PLANS = [
   },
   {
     Icon: Sparkles,
-    name: "Quantum Engine",
-    tag: "Premium Researcher · Recommended",
+    name: "Premium Researcher",
+    tag: "For deeper STEM work",
     price: "$10",
     period: "/ Month",
     cta: "Initialize Quantum Engine",
@@ -40,8 +40,8 @@ const PLANS = [
   },
   {
     Icon: Building2,
-    name: "Institutional Grid",
-    tag: "University / Lab Network",
+    name: "Institutional",
+    tag: "Classroom and lab teams",
     price: "Custom",
     period: "Pricing",
     cta: "Request licensing quote",
