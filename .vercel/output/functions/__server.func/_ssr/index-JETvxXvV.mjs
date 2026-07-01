@@ -1,8 +1,8 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-EdgwWCLL.mjs";
+import { b as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-BqNrySHH.mjs";
 import { a as useMotionValue, b as useSpring, m as motion, c as useScroll, d as useTransform } from "../_libs/framer-motion.mjs";
-import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, i as Brain, P as PenTool, j as Telescope, N as NotebookPen, k as ListChecks, l as Network, R as Rocket, a as Sparkles, m as FolderLock, n as SendHorizontal } from "../_libs/lucide-react.mjs";
+import { i as Target, d as FileText, j as BookOpen, k as FolderKanban, A as ArrowRight, g as ChevronRight, R as Route, l as BookOpenCheck, m as ListTree, b as Brain, P as PenTool, n as Telescope, o as NotebookPen, p as ListChecks, N as Network, q as Rocket, a as Sparkles, r as FolderLock, e as ShieldCheck, s as CircleCheck, t as PlugZap, u as School, v as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
 import "../_libs/cookie-es.mjs";
@@ -296,96 +296,145 @@ function Hero() {
     ] })
   ] });
 }
+const PROBLEMS = [
+  {
+    icon: Route,
+    label: "Multistep problems",
+    title: "A problem stops making sense halfway through.",
+    body: "One missed step in a derivation, physics setup, or chemistry mechanism can make the rest feel unusable. SciForge keeps the work in a STEM workspace so you can inspect the path, not just the final answer."
+  },
+  {
+    icon: BookOpenCheck,
+    label: "Study notes",
+    title: "Notes pile up before they become study material.",
+    body: "Lecture fragments, lab observations, and rough outlines need to turn into review notes, quizzes, and maps. SciForge gives those study jobs a place to live together."
+  },
+  {
+    icon: ListTree,
+    label: "Classroom practice",
+    title: "Teachers need the next practice step fast.",
+    body: "A class may need another explanation, a targeted quiz, or a prerequisite map. SciForge helps turn the same topic into the next useful study artifact."
+  }
+];
+function ProblemSection() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "relative py-24", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SectionHeader,
+      {
+        kicker: "02 · STUDY BOTTLENECKS",
+        title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          "STEM work gets stuck",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          "in ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "predictable places" }),
+          "."
+        ] }),
+        sub: "SciForge AI is built for the messy middle between seeing an answer and understanding how to get there."
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 grid gap-4 lg:grid-cols-3", children: PROBLEMS.map((problem) => {
+      const Icon = problem.icon;
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { className: "h-full", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "inline-flex h-10 w-10 items-center justify-center rounded-lg bg-cyan/15 text-cyan", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "max-w-[9rem] text-right font-mono text-[10px] uppercase leading-snug tracking-[0.2em] text-muted-foreground", children: problem.label })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-5 font-display text-xl font-bold tracking-tight", children: problem.title }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3 text-sm leading-relaxed text-muted-foreground", children: problem.body })
+      ] }) }, problem.title);
+    }) })
+  ] }) });
+}
 const WORKSPACES = [
   {
     icon: Brain,
     code: "W-01",
-    title: "Core Intelligence Console",
+    title: "Ask a STEM mentor",
     redirectTarget: "core-intelligence-console",
-    motion: "Stream-pill ignition · 60fps token cascade",
-    body: "Collaborate with your adaptive STEM mentor inside an optimized, multi-model execution surface engineered for deep academic inquiry.",
+    motion: "Guided answer path",
+    body: "Work through formulas, concepts, and lab questions with guided explanations that keep the reasoning visible.",
     tone: "orange",
-    features: ["Multi-model routing", "60fps token cascade", "Adaptive reasoning", "Deep inquiry"]
+    features: ["Step-by-step help", "Concept checks", "Study prompts", "Reasoning support"]
   },
   {
     icon: PenTool,
     code: "W-02",
-    title: "Scribble Analysis Lab",
+    title: "Check handwritten work",
     redirectTarget: "scribble-analysis-lab",
-    motion: "Vector-diff overlay · surgical cubic-bezier path reveal",
-    body: "Real-time vector geometric processing and mistake correction engine that analyzes handwritten equations, sketches, and engineering diagrams.",
+    motion: "Handwriting review",
+    body: "Upload or draw equations, sketches, or diagrams, then review where the work goes off track.",
     tone: "gold",
-    features: ["60Hz vector processing", "Sketch analysis", "Error detection", "Diagram parsing"]
+    features: ["Equation review", "Sketch support", "Mistake checks", "Diagram notes"]
   },
   {
     icon: Telescope,
     code: "W-03",
-    title: "Quantum Research Engine",
+    title: "Work through advanced math",
     redirectTarget: "quantum-research-engine",
-    motion: "Telemetry-glyph scroll · deep-field parallax",
-    body: "Dedicated to intense, multi-variable scientific computations and advanced symbolic algebraic derivations running at 1e-14 precision.",
+    motion: "Advanced problem solving",
+    body: "Use a focused space for symbolic algebra, calculus, and scientific calculations when a problem needs more than quick chat.",
     tone: "cyan",
-    features: ["1e-14 precision", "Symbolic algebra", "Multi-var calculus", "Scientific computing"]
+    features: ["Symbolic algebra", "Calculus help", "Scientific computing", "Precision checks"]
   },
   {
     icon: NotebookPen,
     code: "W-04",
-    title: "Scientific Documentation Lab",
+    title: "Build study notes",
     redirectTarget: "notes-generator",
-    motion: "Sheet-fold cascade · modular accordion bloom",
-    body: "Automated knowledge compilation surface that builds structured summaries, technical notes, and exam-ready outlines.",
+    motion: "Notes to study guide",
+    body: "Turn rough class notes or topic outlines into organized summaries, technical notes, and exam prep material.",
     tone: "orange",
-    features: ["Auto-compilation", "Structured summaries", "Exam briefs", "Technical notes"]
+    features: ["Summary builder", "Review notes", "Exam outlines", "Study exports"]
   },
   {
     icon: ListChecks,
     code: "W-05",
-    title: "Mastery Assessment Engine",
+    title: "Generate practice quizzes",
     redirectTarget: "quiz-generator",
-    motion: "Difficulty-tier ladder · Elo-curve sweep",
-    body: "Fires custom academic testing arrays mapped to strict skill-calibrated difficulty tracks with target dynamic tracking metrics.",
+    motion: "Quiz practice loop",
+    body: "Create targeted quizzes for a topic, skill level, or weak spot so practice matches what you need to learn next.",
     tone: "gold",
-    features: ["Skill calibration", "Elo tracking", "Adaptive testing", "Performance metrics"]
+    features: ["Custom quizzes", "Skill practice", "Difficulty levels", "Progress checks"]
   },
   {
     icon: Network,
     code: "W-06",
-    title: "Concept Dependency Map",
+    title: "Map related concepts",
     redirectTarget: "concept-dependency-map",
-    motion: "Force-graph crystallization · edge-glow trace",
-    body: "Interactive visual network relationship graph mapping prerequisite learning paths and core knowledge structures for STEM subjects.",
+    motion: "Concept map view",
+    body: "See how prerequisites, formulas, and ideas connect across a STEM subject before choosing what to review next.",
     tone: "cyan",
-    features: ["Prerequisite mapping", "Visual graphs", "Knowledge structures", "Learning paths"]
+    features: ["Prerequisite maps", "Concept links", "Learning paths", "Visual review"]
   },
   {
     icon: Rocket,
     code: "W-07",
-    title: "Academic Propulsion",
+    title: "Plan what to study next",
     redirectTarget: "academic-propulsion",
-    motion: "Skill-vector launch · radial velocity rings",
-    body: "Tracks personalized study roadmaps and dynamic skill velocity vectors mapped across a flight-HUD telemetry overlay.",
+    motion: "Study roadmap",
+    body: "Track goals, weak areas, and next steps in one roadmap so study sessions have a clear direction.",
     tone: "orange",
-    features: ["Progress tracking", "Telemetry HUD", "Velocity vectors", "Adaptive paths"]
+    features: ["Study roadmap", "Progress tracking", "Next steps", "Weak spots"]
   },
   {
     icon: Sparkles,
     code: "W-08",
-    title: "Cognitive Synergy Hub",
+    title: "Combine work across subjects",
     redirectTarget: "cognitive-synergy",
-    motion: "Node crystallization · cross-agent synthesis",
-    body: "A centralized real-time workspace where multi-tier agent nodes collaborate to synthesize cross-disciplinary solutions.",
+    motion: "Cross-topic workspace",
+    body: "Bring notes, questions, and research from different STEM topics into one workspace for cross-topic problem solving.",
     tone: "gold",
-    features: ["Multi-agent collab", "Real-time synthesis", "Cross-disciplinary", "Node orchestration"]
+    features: ["Cross-topic help", "Shared workspace", "Synthesis notes", "Project support"]
   },
   {
     icon: FolderLock,
     code: "W-09",
-    title: "Research Portfolio",
+    title: "Save research artifacts",
     redirectTarget: "research-portfolio",
-    motion: "Vault unlock · AES-glyph shimmer",
-    body: "Secure local asset library consolidating all generated documents, quiz histories, lab outputs, and historical artifacts.",
+    motion: "Organized project library",
+    body: "Keep generated documents, quiz history, lab notes, and research outputs organized for later review or export.",
     tone: "cyan",
-    features: ["AES-256 encryption", "Artifact consolidation", "Local library", "Export controls"]
+    features: ["Saved outputs", "Quiz history", "Document library", "Export controls"]
   }
 ];
 function Workspaces() {
@@ -393,15 +442,15 @@ function Workspaces() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       SectionHeader,
       {
-        kicker: "02 · CORE WORKSPACE ARTIFACTS",
+        kicker: "03 · STEM WORKSPACES",
         title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
           "Nine modules.",
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
           "One ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "cognitive instrument" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "study workflow" }),
           "."
         ] }),
-        sub: "Each module is a purpose-built surface — not a chat wrapper. Tuned vocabulary, tuned reasoning chain, tuned visual grammar."
+        sub: "Each card starts with the job it helps you do, from checking handwritten work to saving research artifacts."
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: WORKSPACES.map((w, i) => {
@@ -413,38 +462,99 @@ function Workspaces() {
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, margin: "-60px" },
           transition: { duration: 0.5, delay: i % 3 * 0.06 },
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { "data-cursor-card": true, className: "h-full cursor-pointer", onClick: () => {
-            localStorage.setItem("auth_redirect_target", w.redirectTarget);
-            window.location.href = "https://sci-forge-aii.vercel.app/";
-          }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "div",
-                {
-                  className: `inline-flex h-9 w-9 items-center justify-center rounded-lg ${w.tone === "orange" ? "bg-orange/15 text-orange" : w.tone === "gold" ? "bg-gold/15 text-gold" : "bg-cyan/15 text-cyan"}`,
-                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" })
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-mono text-[10px] text-muted-foreground", children: w.code })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-4 font-display text-lg font-bold tracking-tight", children: w.title }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3", children: w.body }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-3 flex flex-wrap gap-1", children: w.features.slice(0, 3).map((feature) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "span",
-              {
-                className: "rounded-full border border-border/50 bg-background/30 px-2 py-0.5 font-mono text-[9px] text-muted-foreground/70",
-                children: feature
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            TraceCard,
+            {
+              "data-cursor-card": true,
+              className: "h-full cursor-pointer",
+              onClick: () => {
+                localStorage.setItem("auth_redirect_target", w.redirectTarget);
+                window.location.href = "https://sci-forge-aii.vercel.app/";
               },
-              feature
-            )) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 border-t border-border pt-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70", children: "Motion profile" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 font-mono text-[11px] text-cyan", children: w.motion })
-            ] })
-          ] }) })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "div",
+                    {
+                      className: `inline-flex h-9 w-9 items-center justify-center rounded-lg ${w.tone === "orange" ? "bg-orange/15 text-orange" : w.tone === "gold" ? "bg-gold/15 text-gold" : "bg-cyan/15 text-cyan"}`,
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" })
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-mono text-[10px] text-muted-foreground", children: w.code })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-4 font-display text-lg font-bold tracking-tight", children: w.title }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3", children: w.body }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-3 flex flex-wrap gap-1", children: w.features.slice(0, 3).map((feature) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "span",
+                  {
+                    className: "rounded-full border border-border/50 bg-background/30 px-2 py-0.5 font-mono text-[9px] text-muted-foreground/70",
+                    children: feature
+                  },
+                  feature
+                )) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 border-t border-border pt-3", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70", children: "Workspace focus" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 font-mono text-[11px] text-cyan", children: w.motion })
+                ] })
+              ] })
+            }
+          )
         },
         w.code
       );
+    }) })
+  ] }) });
+}
+const FAQS = [
+  {
+    icon: ShieldCheck,
+    question: "Do you train on student work?",
+    answer: "No. The terms shown on this site describe Research Vault work as AES-256 sealed, with no training-pipeline ingest."
+  },
+  {
+    icon: CircleCheck,
+    question: "Can I trust every answer?",
+    answer: "Use it to show steps, check reasoning, and build practice material. For graded work, lab protocols, or citations, verify the final answer with your teacher, textbook, or source material."
+  },
+  {
+    icon: PlugZap,
+    question: "Does it connect to Google Classroom?",
+    answer: "The public site does not promise a live classroom sync today. SciForge AI is a STEM workspace for notes, quizzes, maps, and exports, with integrations scoped through institutional pilots."
+  },
+  {
+    icon: School,
+    question: "Will it fit a classroom or lab?",
+    answer: "Yes, for guided practice, concept review, research notes, and problem-solving support. Teams that need shared access, admin controls, or policy review should start with institutional licensing."
+  },
+  {
+    icon: BookOpenCheck,
+    question: "What makes it different from a chat box?",
+    answer: "The workspace is organized around STEM jobs: handwritten work, symbolic reasoning, quizzes, concept maps, notes, and research portfolios. Students start from the task, not a blank chat prompt."
+  }
+];
+function Faq() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "faq", className: "relative py-24", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SectionHeader,
+      {
+        kicker: "04 · FIELD QUESTIONS",
+        title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          "Clear answers before",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "a buyer has to ask." })
+        ] }),
+        sub: "The short version on privacy, answer quality, integrations, and classroom fit."
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 grid gap-4 md:grid-cols-2", children: FAQS.map((item) => {
+      const Icon = item.icon;
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { className: "h-full", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-full gap-4 p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cyan/15 text-cyan", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display text-base font-bold tracking-tight", children: item.question }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm leading-relaxed text-muted-foreground", children: item.answer })
+        ] })
+      ] }) }, item.question);
     }) })
   ] }) });
 }
@@ -645,7 +755,9 @@ function LandingPage() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(CustomCursor, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(TelemetryBanner, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Workspaces, {})
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ProblemSection, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Workspaces, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Faq, {})
   ] });
 }
 function Index() {

@@ -1,13 +1,13 @@
 import { motion } from "motion/react";
 import { Check, Sparkles, Building2, GraduationCap } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 import { SectionHeader, TraceCard } from "./chrome";
+import { INSTITUTIONAL_MAILTO, SUPPORT_EMAIL } from "@/lib/contact";
 
 const PLANS = [
   {
     Icon: GraduationCap,
-    name: "Core Portal",
-    tag: "Student Tier",
+    name: "Free Student",
+    tag: "Core study tools",
     price: "$0",
     period: "/ Free Account",
     cta: "Open free account",
@@ -23,8 +23,8 @@ const PLANS = [
   },
   {
     Icon: Sparkles,
-    name: "Quantum Engine",
-    tag: "Premium Researcher · Recommended",
+    name: "Premium Researcher",
+    tag: "For deeper STEM work",
     price: "$10",
     period: "/ Month",
     cta: "Initialize Quantum Engine",
@@ -40,12 +40,12 @@ const PLANS = [
   },
   {
     Icon: Building2,
-    name: "Institutional Grid",
-    tag: "University / Lab Network",
+    name: "Institutional",
+    tag: "Classroom and lab teams",
     price: "Custom",
     period: "Pricing",
     cta: "Request licensing quote",
-    href: "/",
+    href: INSTITUTIONAL_MAILTO,
     featured: false,
     signupRedirect: false,
     items: [
@@ -156,8 +156,8 @@ export function PricingPage() {
                             {p.cta}
                           </button>
                         ) : (
-                          <Link
-                            to={p.href}
+                          <a
+                            href={p.href}
                             className={`inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-semibold transition ${
                               p.featured
                                 ? "brand-gradient text-background shadow-[0_0_28px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]"
@@ -165,7 +165,7 @@ export function PricingPage() {
                             }`}
                           >
                             {p.cta}
-                          </Link>
+                          </a>
                         )}
                       </div>
                     </div>
@@ -206,7 +206,7 @@ export function PricingPage() {
               ],
               [
                 "Institutional pilot timeline?",
-                "Two-week pilot, dedicated allocation. Ping the licensing team and you'll have a sandbox by Friday.",
+                `Email ${SUPPORT_EMAIL} for institutional pilots, sales, or support questions. We'll keep the next step simple and clear.`,
               ],
             ].map(([q, a]) => (
               <TraceCard key={q}>

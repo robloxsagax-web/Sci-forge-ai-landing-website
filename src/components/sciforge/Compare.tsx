@@ -88,9 +88,9 @@ export function ComparePage() {
             SciForge AI vs ChatGPT for STEM study.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">
-            ChatGPT is a broad general assistant. SciForge AI is a STEM workbench
-            for students and researchers who need structured problem solving,
-            diagrams, notes, quizzes, and concept maps in one study flow.
+            ChatGPT is a broad general assistant. SciForge AI is a STEM workbench for students and
+            researchers who need structured problem solving, diagrams, notes, quizzes, and concept
+            maps in one study flow.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link
@@ -126,8 +126,8 @@ export function ComparePage() {
                   SciForge AI
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Purpose-built around STEM learning workflows, so the tool starts
-                  closer to the work a student or researcher is trying to finish.
+                  Purpose-built around STEM learning workflows, so the tool starts closer to the
+                  work a student or researcher is trying to finish.
                 </p>
               </div>
             </TraceCard>
@@ -141,9 +141,9 @@ export function ComparePage() {
                   SciForge AI packages the STEM workflow around the answer.
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                  A generic chat tool can explain a formula. SciForge AI is built
-                  to carry the surrounding study loop: sketch analysis, concept
-                  dependencies, quiz generation, notes, and research artifacts.
+                  A generic chat tool can explain a formula. SciForge AI is built to carry the
+                  surrounding study loop: sketch analysis, concept dependencies, quiz generation,
+                  notes, and research artifacts.
                 </p>
               </div>
             </TraceCard>
@@ -157,8 +157,8 @@ export function ComparePage() {
                   ChatGPT
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Strong as a broad assistant, especially when you already know
-                  what to ask and how to shape the output.
+                  Strong as a broad assistant, especially when you already know what to ask and how
+                  to shape the output.
                 </p>
               </div>
             </TraceCard>
@@ -220,12 +220,8 @@ export function ComparePage() {
                     <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-orange/15 text-orange">
                       <Icon className="h-4 w-4" />
                     </div>
-                    <h3 className="mt-4 font-display text-lg font-bold tracking-tight">
-                      {title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {body}
-                    </p>
+                    <h3 className="mt-4 font-display text-lg font-bold tracking-tight">{title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
                   </div>
                 </TraceCard>
               </div>

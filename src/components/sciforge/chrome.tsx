@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Sun, Moon, Type, ArrowRight } from "lucide-react";
+import { SUPPORT_EMAIL, SUPPORT_MAILTO } from "@/lib/contact";
 
 /* ===========================================================
  * SciForge AI — Shared site chrome
@@ -112,7 +113,10 @@ export function Nav({ theme, setTheme, dyslexic, setDyslexic }: ReturnType<typeo
           <Link to="/" className="flex items-center gap-2.5">
             <BrandMark />
             <span className="font-display text-[15px] font-extrabold tracking-[0.18em] uppercase">
-              SCI<span className="text-white">FORGE</span><span className="bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent">AI</span>
+              SCI<span className="text-white">FORGE</span>
+              <span className="bg-gradient-to-r from-[#FF7A00] to-[#FFB547] bg-clip-text text-transparent">
+                AI
+              </span>
             </span>
             <span className="hidden md:inline-flex items-center gap-1.5 ml-3 pl-3 border-l border-border font-mono text-[10px] text-muted-foreground">
               <span className="h-1 w-1 rounded-full bg-mentor animate-pulse-dot" />
@@ -184,14 +188,16 @@ const TELEMETRY = [
 export function TelemetryBanner() {
   const doubled = useMemo(() => [...TELEMETRY, ...TELEMETRY, ...TELEMETRY], []);
   return (
-    <div aria-hidden className="group relative overflow-hidden border-y border-border bg-background/40">
+    <div
+      aria-hidden
+      className="group relative overflow-hidden border-y border-border bg-background/40"
+    >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
       <div className="flex w-max animate-marquee-x whitespace-nowrap py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/40 group-hover:text-cyan/80 transition-colors">
         {doubled.map((t, i) => (
           <span key={i} className="px-6 flex items-center gap-3">
-            <span className="h-1 w-1 rounded-full bg-orange/70" />
-            [{t}]
+            <span className="h-1 w-1 rounded-full bg-orange/70" />[{t}]
           </span>
         ))}
       </div>
@@ -266,11 +272,11 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[13px]">
           {[
-            ["Core Dashboard", "/"],
-            ["System Documentation", "/architecture"],
-            ["API Pipeline", "/architecture"],
-            ["Institutional Licensing", "/pricing"],
-            ["Compare ChatGPT", "/compare"],
+            ["Workspaces", "/"],
+            ["Core Intelligence", "/architecture"],
+            ["Architecture overview", "/architecture"],
+            ["Pricing", "/pricing"],
+            ["SciForge AI vs ChatGPT", "/compare"],
           ].map(([l, href]) => (
             <Link
               key={l}
@@ -287,6 +293,11 @@ export function SiteFooter() {
             All systems nominal · v4.1 Aurora
           </div>
         </div>
+        <div className="mt-5 flex justify-center text-center text-sm text-muted-foreground">
+          <a href={SUPPORT_MAILTO} className="transition-colors hover:text-orange">
+            Support, sales, and institutional questions: {SUPPORT_EMAIL}
+          </a>
+        </div>
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground">
           <div>© 2026 SCIFORGEAI</div>
           <div className="tracking-[0.22em] uppercase">Forged for STEM</div>
@@ -296,7 +307,13 @@ export function SiteFooter() {
   );
 }
 
-export function SiteShell({ children, showCursor = false }: { children: React.ReactNode; showCursor?: boolean }) {
+export function SiteShell({
+  children,
+  showCursor = false,
+}: {
+  children: React.ReactNode;
+  showCursor?: boolean;
+}) {
   const chrome = useChrome();
   return (
     <div id="top" className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
