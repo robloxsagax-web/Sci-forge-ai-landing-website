@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { b as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-B6LgZmbO.mjs";
+import { b as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-Dpaq3AS1.mjs";
 import { a as useMotionValue, b as useSpring, m as motion, c as useScroll, d as useTransform } from "../_libs/framer-motion.mjs";
 import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, R as Route, i as BookOpenCheck, j as ListTree, k as Brain, P as PenTool, l as Telescope, N as NotebookPen, m as ListChecks, n as Network, o as Rocket, a as Sparkles, p as FolderLock, q as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
@@ -349,97 +349,92 @@ const WORKSPACES = [
   {
     icon: Brain,
     code: "W-01",
-    title: "Core Intelligence Console",
+    title: "Ask a STEM mentor",
     redirectTarget: "core-intelligence-console",
-    motion: "Stream-pill ignition · 60fps token cascade",
-    body: "Collaborate with your adaptive STEM mentor inside an optimized, multi-model execution surface engineered for deep academic inquiry.",
+    motion: "Guided answer path",
+    body: "Work through formulas, concepts, and lab questions with guided explanations that keep the reasoning visible.",
     tone: "orange",
-    features: ["Multi-model routing", "60fps token cascade", "Adaptive reasoning", "Deep inquiry"]
+    features: ["Step-by-step help", "Concept checks", "Study prompts", "Reasoning support"]
   },
   {
     icon: PenTool,
     code: "W-02",
-    title: "Scribble Analysis Lab",
+    title: "Check handwritten work",
     redirectTarget: "scribble-analysis-lab",
-    motion: "Vector-diff overlay · surgical cubic-bezier path reveal",
-    body: "Real-time vector geometric processing and mistake correction engine that analyzes handwritten equations, sketches, and engineering diagrams.",
+    motion: "Handwriting review",
+    body: "Upload or draw equations, sketches, or diagrams, then review where the work goes off track.",
     tone: "gold",
-    features: ["60Hz vector processing", "Sketch analysis", "Error detection", "Diagram parsing"]
+    features: ["Equation review", "Sketch support", "Mistake checks", "Diagram notes"]
   },
   {
     icon: Telescope,
     code: "W-03",
-    title: "Quantum Research Engine",
+    title: "Work through advanced math",
     redirectTarget: "quantum-research-engine",
-    motion: "Telemetry-glyph scroll · deep-field parallax",
-    body: "Dedicated to intense, multi-variable scientific computations and advanced symbolic algebraic derivations running at 1e-14 precision.",
+    motion: "Advanced problem solving",
+    body: "Use a focused space for symbolic algebra, calculus, and scientific calculations when a problem needs more than quick chat.",
     tone: "cyan",
-    features: ["1e-14 precision", "Symbolic algebra", "Multi-var calculus", "Scientific computing"]
+    features: ["Symbolic algebra", "Calculus help", "Scientific computing", "Precision checks"]
   },
   {
     icon: NotebookPen,
     code: "W-04",
-    title: "Scientific Documentation Lab",
+    title: "Build study notes",
     redirectTarget: "notes-generator",
-    motion: "Sheet-fold cascade · modular accordion bloom",
-    body: "Automated knowledge compilation surface that builds structured summaries, technical notes, and exam-ready outlines.",
+    motion: "Notes to study guide",
+    body: "Turn rough class notes or topic outlines into organized summaries, technical notes, and exam prep material.",
     tone: "orange",
-    features: ["Auto-compilation", "Structured summaries", "Exam briefs", "Technical notes"]
+    features: ["Summary builder", "Review notes", "Exam outlines", "Study exports"]
   },
   {
     icon: ListChecks,
     code: "W-05",
-    title: "Mastery Assessment Engine",
+    title: "Generate practice quizzes",
     redirectTarget: "quiz-generator",
-    motion: "Difficulty-tier ladder · Elo-curve sweep",
-    body: "Fires custom academic testing arrays mapped to strict skill-calibrated difficulty tracks with target dynamic tracking metrics.",
+    motion: "Quiz practice loop",
+    body: "Create targeted quizzes for a topic, skill level, or weak spot so practice matches what you need to learn next.",
     tone: "gold",
-    features: ["Skill calibration", "Elo tracking", "Adaptive testing", "Performance metrics"]
+    features: ["Custom quizzes", "Skill practice", "Difficulty levels", "Progress checks"]
   },
   {
     icon: Network,
     code: "W-06",
-    title: "Concept Dependency Map",
+    title: "Map related concepts",
     redirectTarget: "concept-dependency-map",
-    motion: "Force-graph crystallization · edge-glow trace",
-    body: "Interactive visual network relationship graph mapping prerequisite learning paths and core knowledge structures for STEM subjects.",
+    motion: "Concept map view",
+    body: "See how prerequisites, formulas, and ideas connect across a STEM subject before choosing what to review next.",
     tone: "cyan",
-    features: ["Prerequisite mapping", "Visual graphs", "Knowledge structures", "Learning paths"]
+    features: ["Prerequisite maps", "Concept links", "Learning paths", "Visual review"]
   },
   {
     icon: Rocket,
     code: "W-07",
-    title: "Academic Propulsion",
+    title: "Plan what to study next",
     redirectTarget: "academic-propulsion",
-    motion: "Skill-vector launch · radial velocity rings",
-    body: "Tracks personalized study roadmaps and dynamic skill velocity vectors mapped across a flight-HUD telemetry overlay.",
+    motion: "Study roadmap",
+    body: "Track goals, weak areas, and next steps in one roadmap so study sessions have a clear direction.",
     tone: "orange",
-    features: ["Progress tracking", "Telemetry HUD", "Velocity vectors", "Adaptive paths"]
+    features: ["Study roadmap", "Progress tracking", "Next steps", "Weak spots"]
   },
   {
     icon: Sparkles,
     code: "W-08",
-    title: "Cognitive Synergy Hub",
+    title: "Combine work across subjects",
     redirectTarget: "cognitive-synergy",
-    motion: "Node crystallization · cross-agent synthesis",
-    body: "A centralized real-time workspace where multi-tier agent nodes collaborate to synthesize cross-disciplinary solutions.",
+    motion: "Cross-topic workspace",
+    body: "Bring notes, questions, and research from different STEM topics into one workspace for cross-topic problem solving.",
     tone: "gold",
-    features: [
-      "Multi-agent collab",
-      "Real-time synthesis",
-      "Cross-disciplinary",
-      "Node orchestration"
-    ]
+    features: ["Cross-topic help", "Shared workspace", "Synthesis notes", "Project support"]
   },
   {
     icon: FolderLock,
     code: "W-09",
-    title: "Research Portfolio",
+    title: "Save research artifacts",
     redirectTarget: "research-portfolio",
-    motion: "Vault unlock · AES-glyph shimmer",
-    body: "Secure local asset library consolidating all generated documents, quiz histories, lab outputs, and historical artifacts.",
+    motion: "Organized project library",
+    body: "Keep generated documents, quiz history, lab notes, and research outputs organized for later review or export.",
     tone: "cyan",
-    features: ["AES-256 encryption", "Artifact consolidation", "Local library", "Export controls"]
+    features: ["Saved outputs", "Quiz history", "Document library", "Export controls"]
   }
 ];
 function Workspaces() {
@@ -447,15 +442,15 @@ function Workspaces() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       SectionHeader,
       {
-        kicker: "03 · CORE WORKSPACE ARTIFACTS",
+        kicker: "03 · STEM WORKSPACES",
         title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
           "Nine modules.",
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
           "One ",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "cognitive instrument" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "study workflow" }),
           "."
         ] }),
-        sub: "Each module is a purpose-built surface — not a chat wrapper. Tuned vocabulary, tuned reasoning chain, tuned visual grammar."
+        sub: "Each card starts with the job it helps you do, from checking handwritten work to saving research artifacts."
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: WORKSPACES.map((w, i) => {
@@ -498,7 +493,7 @@ function Workspaces() {
                   feature
                 )) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 border-t border-border pt-3", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70", children: "Motion profile" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70", children: "Workspace focus" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 font-mono text-[11px] text-cyan", children: w.motion })
                 ] })
               ] })
