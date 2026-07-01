@@ -36,6 +36,9 @@ function reportLovableError(error, context = {}) {
     }
   );
 }
+const SUPPORT_EMAIL = "sci-forge-ai@support.tin.computer";
+const SUPPORT_MAILTO = `mailto:${SUPPORT_EMAIL}`;
+const INSTITUTIONAL_MAILTO = `${SUPPORT_MAILTO}?subject=SciForge%20AI%20institutional%20pilot`;
 function useChrome() {
   const [theme, setTheme] = reactExports.useState("dark");
   const [dyslexic, setDyslexic] = reactExports.useState(true);
@@ -272,6 +275,10 @@ function SiteFooter() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-mentor animate-pulse-dot" }),
       "All systems nominal · v4.1 Aurora"
     ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-5 flex justify-center text-center text-sm text-muted-foreground", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: SUPPORT_MAILTO, className: "transition-colors hover:text-orange", children: [
+      "Support, sales, and institutional questions: ",
+      SUPPORT_EMAIL
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: "© 2026 SCIFORGEAI" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "tracking-[0.22em] uppercase", children: "Forged for STEM" })
@@ -383,7 +390,7 @@ function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SiteShell, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) }) });
 }
-const $$splitComponentImporter$3 = () => import("./propulsion-B3cZPQ5M.mjs");
+const $$splitComponentImporter$3 = () => import("./propulsion-Ba-EKpKC.mjs");
 const Route$3 = createFileRoute("/propulsion")({
   head: () => ({
     meta: [{
@@ -401,25 +408,25 @@ const Route$3 = createFileRoute("/propulsion")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-const $$splitComponentImporter$2 = () => import("./pricing-BrdLQaz3.mjs");
+const $$splitComponentImporter$2 = () => import("./pricing-DuwKskAr.mjs");
 const Route$2 = createFileRoute("/pricing")({
   head: () => ({
     meta: [{
       title: "Pricing — SciForge AI"
     }, {
       name: "description",
-      content: "Free Student Core, Rs. 2,500/mo Quantum Engine for researchers, and custom Institutional Grid licensing."
+      content: "Free Student at $0, Premium Researcher at $10/month, and Institutional custom pricing for classrooms and labs."
     }, {
       property: "og:title",
       content: "Pricing — SciForge AI"
     }, {
       property: "og:description",
-      content: "Three activation tiers calibrated for the student, the researcher, and the institution."
+      content: "Free Student at $0, Premium Researcher at $10/month, and Institutional custom pricing for classrooms and labs."
     }]
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./architecture-BR_y7TK1.mjs");
+const $$splitComponentImporter$1 = () => import("./architecture-DOgPW9g9.mjs");
 const Route$1 = createFileRoute("/architecture")({
   head: () => ({
     meta: [{
@@ -437,7 +444,7 @@ const Route$1 = createFileRoute("/architecture")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-C13SzsAW.mjs");
+const $$splitComponentImporter = () => import("./index-B_eWfE6P.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
@@ -497,8 +504,10 @@ const router = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   getRouter
 }, Symbol.toStringTag, { value: "Module" }));
 export {
+  INSTITUTIONAL_MAILTO as I,
   SectionHeader as S,
   TraceCard as T,
-  TelemetryBanner as a,
+  SUPPORT_EMAIL as a,
+  TelemetryBanner as b,
   router as r
 };
