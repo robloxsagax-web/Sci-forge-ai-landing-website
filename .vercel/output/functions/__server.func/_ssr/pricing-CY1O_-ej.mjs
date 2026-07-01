@@ -1,5 +1,5 @@
 import { j as jsxRuntimeExports } from "../_libs/react.mjs";
-import { I as INSTITUTIONAL_MAILTO, T as TraceCard, S as SectionHeader, a as SUPPORT_EMAIL } from "./router-Dpaq3AS1.mjs";
+import { I as INSTITUTIONAL_MAILTO, T as TraceCard, S as SectionHeader, a as SUPPORT_EMAIL } from "./router-HA_XD36i.mjs";
 import { G as GraduationCap, a as Sparkles, B as Building2, C as Check } from "../_libs/lucide-react.mjs";
 import { m as motion } from "../_libs/framer-motion.mjs";
 import "../_libs/tanstack__query-core.mjs";
