@@ -1,8 +1,10 @@
 import { j as jsxRuntimeExports } from "../_libs/react.mjs";
-import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { T as TraceCard, S as SectionHeader } from "./router-EdgwWCLL.mjs";
+import { I as INSTITUTIONAL_MAILTO, T as TraceCard, S as SectionHeader, a as SUPPORT_EMAIL } from "./router-B6LgZmbO.mjs";
 import { G as GraduationCap, a as Sparkles, B as Building2, C as Check } from "../_libs/lucide-react.mjs";
 import { m as motion } from "../_libs/framer-motion.mjs";
+import "../_libs/tanstack__query-core.mjs";
+import "../_libs/tanstack__react-query.mjs";
+import "../_libs/tanstack__react-router.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
 import "../_libs/cookie-es.mjs";
@@ -16,15 +18,13 @@ import "crypto";
 import "async_hooks";
 import "stream";
 import "../_libs/isbot.mjs";
-import "../_libs/tanstack__query-core.mjs";
-import "../_libs/tanstack__react-query.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
 const PLANS = [
   {
     Icon: GraduationCap,
-    name: "Core Portal",
-    tag: "Student Tier",
+    name: "Free Student",
+    tag: "Core study tools",
     price: "$0",
     period: "/ Free Account",
     cta: "Open free account",
@@ -40,8 +40,8 @@ const PLANS = [
   },
   {
     Icon: Sparkles,
-    name: "Quantum Engine",
-    tag: "Premium Researcher · Recommended",
+    name: "Premium Researcher",
+    tag: "For deeper STEM work",
     price: "$10",
     period: "/ Month",
     cta: "Initialize Quantum Engine",
@@ -57,12 +57,12 @@ const PLANS = [
   },
   {
     Icon: Building2,
-    name: "Institutional Grid",
-    tag: "University / Lab Network",
+    name: "Institutional",
+    tag: "Classroom and lab teams",
     price: "Custom",
     period: "Pricing",
     cta: "Request licensing quote",
-    href: "/",
+    href: INSTITUTIONAL_MAILTO,
     featured: false,
     signupRedirect: false,
     items: [
@@ -147,9 +147,9 @@ function PricingPage() {
                     children: p.cta
                   }
                 ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Link,
+                  "a",
                   {
-                    to: p.href,
+                    href: p.href,
                     className: `inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-semibold transition ${p.featured ? "brand-gradient text-background shadow-[0_0_28px_-4px_color-mix(in_oklab,var(--brand-orange)_70%,transparent)]" : "border border-border bg-card/60 hover:border-orange/60"}`,
                     children: p.cta
                   }
@@ -189,7 +189,7 @@ function PricingPage() {
         ],
         [
           "Institutional pilot timeline?",
-          "Two-week pilot, dedicated allocation. Ping the licensing team and you'll have a sandbox by Friday."
+          `Email ${SUPPORT_EMAIL} for institutional pilots, sales, or support questions. We'll keep the next step simple and clear.`
         ]
       ].map(([q, a]) => /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display text-base font-bold", children: q }),

@@ -1,8 +1,8 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { a as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-EdgwWCLL.mjs";
+import { b as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-B6LgZmbO.mjs";
 import { a as useMotionValue, b as useSpring, m as motion, c as useScroll, d as useTransform } from "../_libs/framer-motion.mjs";
-import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, i as Brain, P as PenTool, j as Telescope, N as NotebookPen, k as ListChecks, l as Network, R as Rocket, a as Sparkles, m as FolderLock, n as SendHorizontal } from "../_libs/lucide-react.mjs";
+import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, R as Route, i as BookOpenCheck, j as ListTree, k as Brain, P as PenTool, l as Telescope, N as NotebookPen, m as ListChecks, n as Network, o as Rocket, a as Sparkles, p as FolderLock, q as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
 import "../_libs/cookie-es.mjs";
@@ -296,6 +296,55 @@ function Hero() {
     ] })
   ] });
 }
+const PROBLEMS = [
+  {
+    icon: Route,
+    label: "Multistep problems",
+    title: "A problem stops making sense halfway through.",
+    body: "One missed step in a derivation, physics setup, or chemistry mechanism can make the rest feel unusable. SciForge keeps the work in a STEM workspace so you can inspect the path, not just the final answer."
+  },
+  {
+    icon: BookOpenCheck,
+    label: "Study notes",
+    title: "Notes pile up before they become study material.",
+    body: "Lecture fragments, lab observations, and rough outlines need to turn into review notes, quizzes, and maps. SciForge gives those study jobs a place to live together."
+  },
+  {
+    icon: ListTree,
+    label: "Classroom practice",
+    title: "Teachers need the next practice step fast.",
+    body: "A class may need another explanation, a targeted quiz, or a prerequisite map. SciForge helps turn the same topic into the next useful study artifact."
+  }
+];
+function ProblemSection() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "relative py-24", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SectionHeader,
+      {
+        kicker: "02 · STUDY BOTTLENECKS",
+        title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          "STEM work gets stuck",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          "in ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "predictable places" }),
+          "."
+        ] }),
+        sub: "SciForge AI is built for the messy middle between seeing an answer and understanding how to get there."
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 grid gap-4 lg:grid-cols-3", children: PROBLEMS.map((problem) => {
+      const Icon = problem.icon;
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { className: "h-full", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "inline-flex h-10 w-10 items-center justify-center rounded-lg bg-cyan/15 text-cyan", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "max-w-[9rem] text-right font-mono text-[10px] uppercase leading-snug tracking-[0.2em] text-muted-foreground", children: problem.label })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-5 font-display text-xl font-bold tracking-tight", children: problem.title }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3 text-sm leading-relaxed text-muted-foreground", children: problem.body })
+      ] }) }, problem.title);
+    }) })
+  ] }) });
+}
 const WORKSPACES = [
   {
     icon: Brain,
@@ -375,7 +424,12 @@ const WORKSPACES = [
     motion: "Node crystallization · cross-agent synthesis",
     body: "A centralized real-time workspace where multi-tier agent nodes collaborate to synthesize cross-disciplinary solutions.",
     tone: "gold",
-    features: ["Multi-agent collab", "Real-time synthesis", "Cross-disciplinary", "Node orchestration"]
+    features: [
+      "Multi-agent collab",
+      "Real-time synthesis",
+      "Cross-disciplinary",
+      "Node orchestration"
+    ]
   },
   {
     icon: FolderLock,
@@ -393,7 +447,7 @@ function Workspaces() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       SectionHeader,
       {
-        kicker: "02 · CORE WORKSPACE ARTIFACTS",
+        kicker: "03 · CORE WORKSPACE ARTIFACTS",
         title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
           "Nine modules.",
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
@@ -413,35 +467,43 @@ function Workspaces() {
           whileInView: { opacity: 1, y: 0 },
           viewport: { once: true, margin: "-60px" },
           transition: { duration: 0.5, delay: i % 3 * 0.06 },
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { "data-cursor-card": true, className: "h-full cursor-pointer", onClick: () => {
-            localStorage.setItem("auth_redirect_target", w.redirectTarget);
-            window.location.href = "https://sci-forge-aii.vercel.app/";
-          }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "div",
-                {
-                  className: `inline-flex h-9 w-9 items-center justify-center rounded-lg ${w.tone === "orange" ? "bg-orange/15 text-orange" : w.tone === "gold" ? "bg-gold/15 text-gold" : "bg-cyan/15 text-cyan"}`,
-                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" })
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-mono text-[10px] text-muted-foreground", children: w.code })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-4 font-display text-lg font-bold tracking-tight", children: w.title }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3", children: w.body }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-3 flex flex-wrap gap-1", children: w.features.slice(0, 3).map((feature) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "span",
-              {
-                className: "rounded-full border border-border/50 bg-background/30 px-2 py-0.5 font-mono text-[9px] text-muted-foreground/70",
-                children: feature
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            TraceCard,
+            {
+              "data-cursor-card": true,
+              className: "h-full cursor-pointer",
+              onClick: () => {
+                localStorage.setItem("auth_redirect_target", w.redirectTarget);
+                window.location.href = "https://sci-forge-aii.vercel.app/";
               },
-              feature
-            )) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 border-t border-border pt-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70", children: "Motion profile" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 font-mono text-[11px] text-cyan", children: w.motion })
-            ] })
-          ] }) })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "div",
+                    {
+                      className: `inline-flex h-9 w-9 items-center justify-center rounded-lg ${w.tone === "orange" ? "bg-orange/15 text-orange" : w.tone === "gold" ? "bg-gold/15 text-gold" : "bg-cyan/15 text-cyan"}`,
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" })
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-mono text-[10px] text-muted-foreground", children: w.code })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-4 font-display text-lg font-bold tracking-tight", children: w.title }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3", children: w.body }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-3 flex flex-wrap gap-1", children: w.features.slice(0, 3).map((feature) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "span",
+                  {
+                    className: "rounded-full border border-border/50 bg-background/30 px-2 py-0.5 font-mono text-[9px] text-muted-foreground/70",
+                    children: feature
+                  },
+                  feature
+                )) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 border-t border-border pt-3", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] uppercase tracking-widest font-mono text-muted-foreground/70", children: "Motion profile" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 font-mono text-[11px] text-cyan", children: w.motion })
+                ] })
+              ] })
+            }
+          )
         },
         w.code
       );
@@ -645,6 +707,7 @@ function LandingPage() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(CustomCursor, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(TelemetryBanner, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ProblemSection, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Workspaces, {})
   ] });
 }

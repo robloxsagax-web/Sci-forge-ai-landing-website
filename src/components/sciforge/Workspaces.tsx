@@ -114,7 +114,7 @@ export function Workspaces() {
     <section id="workspaces" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          kicker="02 · STEM WORKSPACES"
+          kicker="03 · STEM WORKSPACES"
           title={
             <>
               Nine modules.

@@ -7,12 +7,14 @@ export const Route = createFileRoute("/pricing")({
       { title: "Pricing — SciForge AI" },
       {
         name: "description",
-        content: "Free Student Core, Rs. 2,500/mo Quantum Engine for researchers, and custom Institutional Grid licensing.",
+        content:
+          "Free Student at $0, Premium Researcher at $10/month, and Institutional custom pricing for classrooms and labs.",
       },
       { property: "og:title", content: "Pricing — SciForge AI" },
       {
         property: "og:description",
-        content: "Three activation tiers calibrated for the student, the researcher, and the institution.",
+        content:
+          "Free Student at $0, Premium Researcher at $10/month, and Institutional custom pricing for classrooms and labs.",
       },
     ],
   }),
