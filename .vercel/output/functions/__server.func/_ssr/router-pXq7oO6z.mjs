@@ -258,10 +258,10 @@ function TraceCard({
 function SiteFooter() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { className: "border-t border-border bg-background/60", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-6 py-12", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[13px]", children: [
-      ["Core Dashboard", "/"],
-      ["System Documentation", "/architecture"],
-      ["API Pipeline", "/architecture"],
-      ["Institutional Licensing", "/pricing"]
+      ["Workspaces", "/"],
+      ["Core Intelligence", "/architecture"],
+      ["Architecture overview", "/architecture"],
+      ["Pricing", "/pricing"]
     ].map(([l, href]) => /* @__PURE__ */ jsxRuntimeExports.jsx(
       Link,
       {
@@ -390,7 +390,7 @@ function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SiteShell, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) }) });
 }
-const $$splitComponentImporter$3 = () => import("./propulsion-CPBHy9-_.mjs");
+const $$splitComponentImporter$3 = () => import("./propulsion-B4Y3RskF.mjs");
 const Route$3 = createFileRoute("/propulsion")({
   head: () => ({
     meta: [{
@@ -408,7 +408,7 @@ const Route$3 = createFileRoute("/propulsion")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-const $$splitComponentImporter$2 = () => import("./pricing-CY1O_-ej.mjs");
+const $$splitComponentImporter$2 = () => import("./pricing-BasSLp44.mjs");
 const Route$2 = createFileRoute("/pricing")({
   head: () => ({
     meta: [{
@@ -426,7 +426,7 @@ const Route$2 = createFileRoute("/pricing")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./architecture-_-wCd5Kr.mjs");
+const $$splitComponentImporter$1 = () => import("./architecture-D7-XMkxO.mjs");
 const Route$1 = createFileRoute("/architecture")({
   head: () => ({
     meta: [{
@@ -444,7 +444,7 @@ const Route$1 = createFileRoute("/architecture")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-rBvQiBOU.mjs");
+const $$splitComponentImporter = () => import("./index-CG0prGzr.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
