@@ -19,7 +19,7 @@ import "stream";
 import "../_libs/isbot.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
-const appCss = "/assets/styles-3tCKU-Ub.css";
+const appCss = "/assets/styles-C-Kyf9He.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -120,7 +120,8 @@ const NAV_LINKS = [
   ["Workspaces", "/"],
   ["Core Intelligence", "/architecture"],
   ["Scribble Lab", "/propulsion"],
-  ["Pricing", "/pricing"]
+  ["Pricing", "/pricing"],
+  ["Compare", "/compare"]
 ];
 function Nav({ theme, setTheme, dyslexic, setDyslexic }) {
   const clock = useClock();
@@ -195,16 +196,23 @@ const TELEMETRY = [
 ];
 function TelemetryBanner() {
   const doubled = reactExports.useMemo(() => [...TELEMETRY, ...TELEMETRY, ...TELEMETRY], []);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { "aria-hidden": true, className: "group relative overflow-hidden border-y border-border bg-background/40", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex w-max animate-marquee-x whitespace-nowrap py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/40 group-hover:text-cyan/80 transition-colors", children: doubled.map((t, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "px-6 flex items-center gap-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "h-1 w-1 rounded-full bg-orange/70" }),
-      "[",
-      t,
-      "]"
-    ] }, i)) })
-  ] });
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      "aria-hidden": true,
+      className: "group relative overflow-hidden border-y border-border bg-background/40",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex w-max animate-marquee-x whitespace-nowrap py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/40 group-hover:text-cyan/80 transition-colors", children: doubled.map((t, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "px-6 flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "h-1 w-1 rounded-full bg-orange/70" }),
+          "[",
+          t,
+          "]"
+        ] }, i)) })
+      ]
+    }
+  );
 }
 function SectionHeader({
   kicker,
@@ -261,7 +269,8 @@ function SiteFooter() {
       ["Workspaces", "/"],
       ["Core Intelligence", "/architecture"],
       ["Architecture overview", "/architecture"],
-      ["Pricing", "/pricing"]
+      ["Pricing", "/pricing"],
+      ["SciForge AI vs ChatGPT", "/compare"]
     ].map(([l, href]) => /* @__PURE__ */ jsxRuntimeExports.jsx(
       Link,
       {
@@ -285,7 +294,10 @@ function SiteFooter() {
     ] })
   ] }) });
 }
-function SiteShell({ children, showCursor = false }) {
+function SiteShell({
+  children,
+  showCursor = false
+}) {
   const chrome = useChrome();
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { id: "top", className: "relative min-h-screen bg-background text-foreground overflow-x-hidden", children: [
     showCursor && /* @__PURE__ */ jsxRuntimeExports.jsx(CustomCursor, {}),
@@ -341,7 +353,7 @@ function ErrorComponent({ error, reset }) {
     ] })
   ] }) });
 }
-const Route$4 = createRootRouteWithContext()({
+const Route$5 = createRootRouteWithContext()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -387,11 +399,11 @@ function RootShell({ children }) {
   ] });
 }
 function RootComponent() {
-  const { queryClient } = Route$4.useRouteContext();
+  const { queryClient } = Route$5.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SiteShell, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) }) });
 }
-const $$splitComponentImporter$3 = () => import("./propulsion-B4Y3RskF.mjs");
-const Route$3 = createFileRoute("/propulsion")({
+const $$splitComponentImporter$4 = () => import("./propulsion-CQki3xQG.mjs");
+const Route$4 = createFileRoute("/propulsion")({
   head: () => ({
     meta: [{
       title: "Academic Propulsion — SciForge AI"
@@ -406,10 +418,10 @@ const Route$3 = createFileRoute("/propulsion")({
       content: "Two distinct propulsion profiles. One adaptive workbench for STEM mastery."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$3, "component")
+  component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-const $$splitComponentImporter$2 = () => import("./pricing-BasSLp44.mjs");
-const Route$2 = createFileRoute("/pricing")({
+const $$splitComponentImporter$3 = () => import("./pricing-DNsEOouz.mjs");
+const Route$3 = createFileRoute("/pricing")({
   head: () => ({
     meta: [{
       title: "Pricing — SciForge AI"
@@ -424,9 +436,27 @@ const Route$2 = createFileRoute("/pricing")({
       content: "Free Student at $0, Premium Researcher at $10/month, and Institutional custom pricing for classrooms and labs."
     }]
   }),
+  component: lazyRouteComponent($$splitComponentImporter$3, "component")
+});
+const $$splitComponentImporter$2 = () => import("./compare-CQCubuWr.mjs");
+const Route$2 = createFileRoute("/compare")({
+  head: () => ({
+    meta: [{
+      title: "SciForge AI vs ChatGPT for STEM study"
+    }, {
+      name: "description",
+      content: "Compare SciForge AI with generic chat tools for STEM study, handwritten work, concept maps, quizzes, notes, and research workflows."
+    }, {
+      property: "og:title",
+      content: "SciForge AI vs ChatGPT for STEM study"
+    }, {
+      property: "og:description",
+      content: "See how SciForge AI differs from generic chat assistants for structured STEM study and problem solving."
+    }]
+  }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./architecture-D7-XMkxO.mjs");
+const $$splitComponentImporter$1 = () => import("./architecture-BIitAdcv.mjs");
 const Route$1 = createFileRoute("/architecture")({
   head: () => ({
     meta: [{
@@ -444,7 +474,7 @@ const Route$1 = createFileRoute("/architecture")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-CG0prGzr.mjs");
+const $$splitComponentImporter = () => import("./index-JETvxXvV.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
@@ -462,33 +492,39 @@ const Route = createFileRoute("/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter, "component")
 });
-const PropulsionRoute = Route$3.update({
+const PropulsionRoute = Route$4.update({
   id: "/propulsion",
   path: "/propulsion",
-  getParentRoute: () => Route$4
+  getParentRoute: () => Route$5
 });
-const PricingRoute = Route$2.update({
+const PricingRoute = Route$3.update({
   id: "/pricing",
   path: "/pricing",
-  getParentRoute: () => Route$4
+  getParentRoute: () => Route$5
+});
+const CompareRoute = Route$2.update({
+  id: "/compare",
+  path: "/compare",
+  getParentRoute: () => Route$5
 });
 const ArchitectureRoute = Route$1.update({
   id: "/architecture",
   path: "/architecture",
-  getParentRoute: () => Route$4
+  getParentRoute: () => Route$5
 });
 const IndexRoute = Route.update({
   id: "/",
   path: "/",
-  getParentRoute: () => Route$4
+  getParentRoute: () => Route$5
 });
 const rootRouteChildren = {
   IndexRoute,
   ArchitectureRoute,
+  CompareRoute,
   PricingRoute,
   PropulsionRoute
 };
-const routeTree = Route$4._addFileChildren(rootRouteChildren)._addFileTypes();
+const routeTree = Route$5._addFileChildren(rootRouteChildren)._addFileTypes();
 const getRouter = () => {
   const queryClient = new QueryClient();
   const router2 = createRouter({

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PropulsionRouteImport } from './routes/propulsion'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const PropulsionRoute = PropulsionRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArchitectureRoute = ArchitectureRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/compare': typeof CompareRoute
   '/pricing': typeof PricingRoute
   '/propulsion': typeof PropulsionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/compare': typeof CompareRoute
   '/pricing': typeof PricingRoute
   '/propulsion': typeof PropulsionRoute
 }
@@ -51,20 +59,28 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/compare': typeof CompareRoute
   '/pricing': typeof PricingRoute
   '/propulsion': typeof PropulsionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/architecture' | '/pricing' | '/propulsion'
+  fullPaths: '/' | '/architecture' | '/compare' | '/pricing' | '/propulsion'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/architecture' | '/pricing' | '/propulsion'
-  id: '__root__' | '/' | '/architecture' | '/pricing' | '/propulsion'
+  to: '/' | '/architecture' | '/compare' | '/pricing' | '/propulsion'
+  id:
+    | '__root__'
+    | '/'
+    | '/architecture'
+    | '/compare'
+    | '/pricing'
+    | '/propulsion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  CompareRoute: typeof CompareRoute
   PricingRoute: typeof PricingRoute
   PropulsionRoute: typeof PropulsionRoute
 }
@@ -83,6 +99,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/architecture': {
@@ -105,6 +128,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArchitectureRoute: ArchitectureRoute,
+  CompareRoute: CompareRoute,
   PricingRoute: PricingRoute,
   PropulsionRoute: PropulsionRoute,
 }
