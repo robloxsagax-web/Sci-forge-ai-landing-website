@@ -39,7 +39,7 @@ export function Faq() {
     <section id="faq" className="relative py-24">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
-          kicker="03 · FIELD QUESTIONS"
+          kicker="04 · FIELD QUESTIONS"
           title={
             <>
               Clear answers before

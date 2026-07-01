@@ -19,7 +19,7 @@ import "stream";
 import "../_libs/isbot.mjs";
 import "../_libs/motion-dom.mjs";
 import "../_libs/motion-utils.mjs";
-const appCss = "/assets/styles-DNfwx5Vj.css";
+const appCss = "/assets/styles-3tCKU-Ub.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -390,7 +390,7 @@ function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SiteShell, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) }) });
 }
-const $$splitComponentImporter$3 = () => import("./propulsion-QTTa0Wsg.mjs");
+const $$splitComponentImporter$3 = () => import("./propulsion-CPBHy9-_.mjs");
 const Route$3 = createFileRoute("/propulsion")({
   head: () => ({
     meta: [{
@@ -408,7 +408,7 @@ const Route$3 = createFileRoute("/propulsion")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-const $$splitComponentImporter$2 = () => import("./pricing-tqvQhUKS.mjs");
+const $$splitComponentImporter$2 = () => import("./pricing-CY1O_-ej.mjs");
 const Route$2 = createFileRoute("/pricing")({
   head: () => ({
     meta: [{
@@ -426,7 +426,7 @@ const Route$2 = createFileRoute("/pricing")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./architecture-CsBlulhV.mjs");
+const $$splitComponentImporter$1 = () => import("./architecture-_-wCd5Kr.mjs");
 const Route$1 = createFileRoute("/architecture")({
   head: () => ({
     meta: [{
@@ -444,20 +444,20 @@ const Route$1 = createFileRoute("/architecture")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./index-BTITIXqM.mjs");
+const $$splitComponentImporter = () => import("./index-rBvQiBOU.mjs");
 const Route = createFileRoute("/")({
   head: () => ({
     meta: [{
       title: "SciForge AI — The Cognitive Engine for STEM"
     }, {
       name: "description",
-      content: "AI STEM mentor with scribble analysis, quantum research, adaptive quizzes, and a dyslexia-friendly accessibility engine."
+      content: "AI STEM mentor with scribble analysis, research help, adaptive quizzes, exports, and classroom-ready study workflows."
     }, {
       property: "og:title",
       content: "SciForge AI — The Cognitive Engine for STEM"
     }, {
       property: "og:description",
-      content: "ChatGPT + Apple Intelligence + Google Classroom, engineered for STEM mastery."
+      content: "A STEM study workbench for reasoning, scribble analysis, quizzes, notes, and classroom-ready exports."
     }]
   }),
   component: lazyRouteComponent($$splitComponentImporter, "component")

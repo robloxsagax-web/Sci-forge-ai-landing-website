@@ -1,8 +1,8 @@
 import { j as jsxRuntimeExports, r as reactExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { b as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-Dpaq3AS1.mjs";
+import { b as TelemetryBanner, S as SectionHeader, T as TraceCard } from "./router-HA_XD36i.mjs";
 import { a as useMotionValue, b as useSpring, m as motion, c as useScroll, d as useTransform } from "../_libs/framer-motion.mjs";
-import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, R as Route, i as BookOpenCheck, j as ListTree, k as Brain, P as PenTool, l as Telescope, N as NotebookPen, m as ListChecks, n as Network, o as Rocket, a as Sparkles, p as FolderLock, q as SendHorizontal } from "../_libs/lucide-react.mjs";
+import { e as Target, f as FileText, g as BookOpen, h as FolderKanban, A as ArrowRight, c as ChevronRight, R as Route, i as BookOpenCheck, j as ListTree, k as Brain, P as PenTool, l as Telescope, N as NotebookPen, m as ListChecks, n as Network, o as Rocket, a as Sparkles, p as FolderLock, q as ShieldCheck, r as CircleCheck, s as PlugZap, t as School, u as SendHorizontal } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
 import "../_libs/cookie-es.mjs";
@@ -505,6 +505,59 @@ function Workspaces() {
     }) })
   ] }) });
 }
+const FAQS = [
+  {
+    icon: ShieldCheck,
+    question: "Do you train on student work?",
+    answer: "No. The terms shown on this site describe Research Vault work as AES-256 sealed, with no training-pipeline ingest."
+  },
+  {
+    icon: CircleCheck,
+    question: "Can I trust every answer?",
+    answer: "Use it to show steps, check reasoning, and build practice material. For graded work, lab protocols, or citations, verify the final answer with your teacher, textbook, or source material."
+  },
+  {
+    icon: PlugZap,
+    question: "Does it connect to Google Classroom?",
+    answer: "The public site does not promise a live classroom sync today. SciForge AI is a STEM workspace for notes, quizzes, maps, and exports, with integrations scoped through institutional pilots."
+  },
+  {
+    icon: School,
+    question: "Will it fit a classroom or lab?",
+    answer: "Yes, for guided practice, concept review, research notes, and problem-solving support. Teams that need shared access, admin controls, or policy review should start with institutional licensing."
+  },
+  {
+    icon: BookOpenCheck,
+    question: "What makes it different from a chat box?",
+    answer: "The workspace is organized around STEM jobs: handwritten work, symbolic reasoning, quizzes, concept maps, notes, and research portfolios. Students start from the task, not a blank chat prompt."
+  }
+];
+function Faq() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "faq", className: "relative py-24", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-6xl px-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      SectionHeader,
+      {
+        kicker: "04 · FIELD QUESTIONS",
+        title: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          "Clear answers before",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "brand-gradient-text", children: "a buyer has to ask." })
+        ] }),
+        sub: "The short version on privacy, answer quality, integrations, and classroom fit."
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 grid gap-4 md:grid-cols-2", children: FAQS.map((item) => {
+      const Icon = item.icon;
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(TraceCard, { className: "h-full", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-full gap-4 p-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cyan/15 text-cyan", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "h-4 w-4" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display text-base font-bold tracking-tight", children: item.question }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm leading-relaxed text-muted-foreground", children: item.answer })
+        ] })
+      ] }) }, item.question);
+    }) })
+  ] }) });
+}
 const CURSOR_CONFIGS = {
   default: {
     dotSize: 6,
@@ -703,7 +756,8 @@ function LandingPage() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(TelemetryBanner, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ProblemSection, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Workspaces, {})
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Workspaces, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Faq, {})
   ] });
 }
 function Index() {
